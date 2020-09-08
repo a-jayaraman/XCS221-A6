@@ -4,3 +4,4 @@ $out_dir = "..";             # Create output files in the assignment directory (
 $warnings_as_errors = 1;     # Elevates warnings to errors.  Enforces cleaner code.
 $pdflatex = "pdflatex -halt-on-error -interaction=batchmode %O %S";
                              # Forces latexmk to stop and quit if it encounters an error
+                             

@@ -53,9 +53,10 @@ created.
 Author: Allen B. Taylor, a.b.taylor@gmail.com
 '''
 
+# from Tkinter import *
 from tkinter import *
 import threading
-import queue as queue
+import queue
 
 class _Tk(object):
     """

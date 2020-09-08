@@ -1,32 +1,52 @@
 {\bf Submission Instructions}
 
 {\bf Written Submission:}
-All students must submit an electronic PDF version of the written questions. We
-highly recommend typesetting your solutions via \LaTeX, though it is not
-required. If you choose to hand write your responses, please make sure they are
-well organized and legible when scanned. The source \LaTeX for all problem sets
-is available on GitHub.
+All students must submit an electronic PDF containing solutions to the written
+questions. As long as the submission is legible and well-organized, the course
+staff has no preference between a handwritten and a typeset \LaTeX submission.
+Students wishing to typeset their documents should follow these recommendations:
+\begin{itemize}
+  \item Type responses only in the *-sol.tex files.
+  \item Use the commented recommendations within the Makefile to get started.
+\end{itemize}
 
 {\bf Coding Submission:}
-You should modify the code in {\tt submission.py} between {\tt  START CODE
-HERE} and {\tt END CODE HERE}, but you can add other helper functions outside
-this block if you want. Do not make changes to files other than
-{\tt submission.py}.  When finished, upload only {\tt submission.py} to
-gradescope.
+All assignment code is in the |src/| subirectory.  You will submit only the
+|src/submission.py| file.  Please only make changes between the lines containing
+|### START_CODE_HERE ###| and |### END_CODE_HERE ###|. Do not make changes to
+% The astute reader will notice that there are underscores in the
+% START_CODE_HERE and END_CODE_HERE flags, while the source files actually
+% contain spaces.  This is because our solution sanitization script will
+% otherwise recognize this tag and attempt to delete it.  The underscores are a
+% simple way to prevent this.
+files other than |src/submission.py|.
 
-Your code will be evaluated on two types of test cases, {\bf basic} and
-{\bf hidden}, which you can see in {\tt grader.py}. Basic tests, which are fully
-provided to you, do not stress your code with large inputs or tricky corner
-cases. Hidden tests are more complex and do stress your code.  The inputs of
-hidden tests are provided in {\tt grader.py}, but the correct outputs are not.
-To run the tests, you will need to have {\tt graderUtil.py} in the same
-directory as your code and {\tt grader.py}. Then, you can run all the tests by
-typing {\tt python grader.py}. This will tell you only whether you passed the
-basic tests. On the hidden tests, the script will alert you if your code takes
-too long or crashes, but does not say whether you got the correct output. You
-can also run a single test (e.g., {\tt 3a-0-basic}) by typing {\tt python
-grader.py 3a-0-basic}. We strongly encourage you to read and understand the
-test cases, create your own test cases, and not just blindly run
-{\tt grader.py}. You should make sure to (1) restrict yourself to only using
-libraries included in the starter code, and (2) make sure your code runs without
-errors.
+The unit tests in |src/grader.py| will be used to autograde your submission.
+Run the autograder locally using the following terminal command within the
+|src/| subdirectory:
+\begin{lstlisting}
+python grader.py
+\end{lstlisting}
+
+There are two types of unit tests used by our autograders:
+\begin{itemize}
+  \item |basic|:  These unit tests will verify only that your code runs without
+  errors on obvious test cases.
+  \item |hidden|: These unit tests will verify that your code produces correct
+  results on complex inputs and tricky corner cases.  In the student version of
+  |src/grader.py|, only the setup and inputs to these unit tests are provided.
+  When you run the autograder locally, these test cases will run, but the
+  results will not be verified by the autograder.
+\end{itemize}
+
+For debugging purposes, a single unit test can be run locally.  For example, you
+can run the test case |3a-0-basic| using the following terminal command within
+the |src/| subdirectory:
+\begin{lstlisting}
+python grader.py 3a-0-basic
+\end{lstlisting}
+
+Before beginning this course, we highly recommend you walk through our
+\href{nolink}{Anaconda tutorial \hl{NO LINK YET}} to familiarize yourself with
+our coding environment.  Please use the env defined in |src/environment.yml|
+to run your code.  This is the same environment used by our autograder.

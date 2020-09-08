@@ -1,3 +1,25 @@
+####################
+# STUDENT MAKEFILE #
+####################
+# Possible targets:
+# `make` | `make with_solutions`
+#   Creates the A0_Solutions.pdf handout.  Removes auxiliary studenlatex files
+#   after compilation.
+# `make without_solutions`
+#   Creates the A*.pdf handout.  Removes auxiliary studenlatex files after
+#   compilation.  This creates the handout by creating a temporary copy of all
+#   files, removing solution code, then deleting the temporary directory.
+# `make clean`
+#   Removes assignment handouts, both with and without solutions.
+
+# If you want ot edit your latex live (i.e. WYSIWYG), try running the following
+# command in your tex/ directory:
+#
+# $ latexmk -pvc -jobname="%A_Solutions" A0.tex
+#
+# (Of course, substituting the "A0" for the assignment root doccument)
+#
+
 SHELL = /bin/sh
 
 THIS_ASSIGNMENT = A6

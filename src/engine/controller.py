@@ -99,12 +99,12 @@ class Controller(object):
             self.consecutiveLate += 1
             if self.consecutiveLate < 3: return
             print('*****************************')
-            print(('WARNING: Late to update (' + str(secsLate) + 's)'))
+            print('WARNING: Late to update (' + str(secsLate) + 's)')
             
-            print(('Infer time: ' + str(self.round(self.inferTime))))
-            print(('Action time: ' + str(self.round(self.actionTime))))
-            print(('Update time: ' + str(self.round(self.updateTime))))
-            print(('Draw time: ' + str(self.round(self.drawTime))))
+            print('Infer time: ' + str(self.round(self.inferTime)))
+            print('Action time: ' + str(self.round(self.actionTime)))
+            print('Update time: ' + str(self.round(self.updateTime)))
+            print('Draw time: ' + str(self.round(self.drawTime)))
             print('*****************************')
         else:
             self.consecutiveLate = 0
@@ -120,9 +120,9 @@ class Controller(object):
         if self.iteration == 0: return
         if self.iteration % Const.REPORT_ITER != 0: return
         print('-------------')
-        print(('iteration ' + str(self.iteration)))
+        print('iteration ' + str(self.iteration))
         error = self.errorCounter.getMean() * Const.BELIEF_TILE_SIZE
-        print(('error: ' + str(error)))
+        print('error: ' + str(error))
         print('--------------')
         print('')
         

@@ -9,3 +9,8 @@ are unique ($C_{1i} \neq c_{1j}$ for all $i \neq j$).
 
 {\em Note: you don't need to produce a complicated proof for this question.
 It is acceptable to provide a clear explanation based on your intuitive understanding of the scenario.}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% 📝_5b(.*?)% 📝_5b', f.read(), re.DOTALL)).group(1))
+🐍

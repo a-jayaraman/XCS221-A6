@@ -6,7 +6,7 @@
 #   Creates the A0_Solutions.pdf handout.  Removes auxiliary studenlatex files
 #   after compilation.
 # `make without_solutions`
-#   Creates the A*.pdf handout.  Removes auxiliary studenlatex files after
+#   Creates the A0.pdf handout.  Removes auxiliary latex files after
 #   compilation.  This creates the handout by creating a temporary copy of all
 #   files, removing solution code, then deleting the temporary directory.
 # `make clean`
@@ -15,7 +15,7 @@
 # If you want ot edit your latex live (i.e. WYSIWYG), try running the following
 # command in your tex/ directory:
 #
-# $ latexmk -pvc -jobname="%A_Solutions" A0.tex
+# $ latexmk -pvc -jobname="A0_Solutions"
 #
 # (Of course, substituting the "A0" for the assignment root doccument)
 #
@@ -24,7 +24,7 @@ SHELL = /bin/sh
 
 THIS_ASSIGNMENT = A6
 
-TEX_DEPENDENCIES = $(shell find tex -type f)
+TEX_DEPENDENCIES = $(shell find tex -type f) src/points.json
 
 .DEFAULT_GOAL := with_solutions
 
@@ -44,7 +44,7 @@ $(THIS_ASSIGNMENT).pdf: $(TEX_DEPENDENCIES)
 	cd ./temp_tex_no_solutions ; \
 	find "./" -name "*.tex" -exec sed -i '' '/.*START CODE HERE.*/,/.*END CODE HERE.*/{//!d;}' {} + ; \
 	find "./" -name "*.tex" -exec sed -i '' '/SOLUTION ALERT/{N;d;}' {} + ; \
-	latexmk -quiet $(THIS_ASSIGNMENT).tex && latexmk -quiet $(THIS_ASSIGNMENT).tex -c ; \
+	latexmk -jobname="$(THIS_ASSIGNMENT)" && latexmk -jobname="$(THIS_ASSIGNMENT)" -c ; \
 	cd .. ; \
 	rm -rf ./temp_tex_no_solutions
 
@@ -52,9 +52,9 @@ $(THIS_ASSIGNMENT).pdf: $(TEX_DEPENDENCIES)
 $(THIS_ASSIGNMENT)_Solutions.pdf: $(TEX_DEPENDENCIES)
 	# 1. Make the latex document (see tex/latexmakerc for options)
 	# 2. Then clean it up (if it compiles without errors)
-	cd ./tex; latexmk -quiet -jobname="%A_Solutions" $(THIS_ASSIGNMENT).tex && latexmk -quiet -jobname="%A_Solutions" $(THIS_ASSIGNMENT).tex -c
+	cd ./tex; latexmk -jobname="$(THIS_ASSIGNMENT)_Solutions" && latexmk -jobname="$(THIS_ASSIGNMENT)_Solutions" -c
 
 clean:
-	cd ./tex; latexmk -quiet -C $(THIS_ASSIGNMENT).tex 
-	cd ./tex; latexmk -quiet -jobname="%A_Solutions" -C $(THIS_ASSIGNMENT).tex 
+	cd ./tex; latexmk -jobname="$(THIS_ASSIGNMENT)" -C
+	cd ./tex; latexmk -jobname="$(THIS_ASSIGNMENT)_Solutions" -C
 	rm -rf ./temp_tex_no_solutions

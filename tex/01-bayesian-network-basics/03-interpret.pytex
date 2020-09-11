@@ -14,3 +14,8 @@ Suppose $\epsilon = 0.1$ and $\eta = 0.2$.
   = 1)$? Explain your intuition in terms of the car positions with respect to
   the observations.
 \end{enumerate}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% 📝_1c(.*?)% 📝_1c', f.read(), re.DOTALL)).group(1))
+🐍

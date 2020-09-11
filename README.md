@@ -6,7 +6,7 @@ compile a LaTeX submission.
 ## Running the autograder locally
 All assignment code is in the `src/` subirectory.  You will submit only the
 `src/submission.py` file.  Please only make changes between the lines containing
-`### START_CODE_HERE ###` and `### END_CODE_HERE ###`. Do not make changes to
+`### START CODE HERE ###` and `### END CODE HERE ###`. Do not make changes to
 files other than `src/submission.py`.
 
 The unit tests in `src/grader.py` will be used to autograde your submission.
@@ -63,11 +63,11 @@ written any solutions yet, it will porbably look a lot like the
 
 To see what it looks like with some solution code, open up any file with a name
 like *\*-sol.tex.*.  Put the following code between the tags
-`### START_CODE_HERE ###` and `### END_CODE_HERE ###`:
+`### START CODE HERE ###` and `### END CODE HERE ###`:
 ```latex
 \begin{answer}
   % ### START CODE HERE ###
-  \LaTeX rocks!
+  \LaTeX
   % ### END CODE HERE ###
 \end{answer}
 ```

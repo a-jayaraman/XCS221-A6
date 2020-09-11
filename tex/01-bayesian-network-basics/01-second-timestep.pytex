@@ -2,3 +2,8 @@
 Suppose we have a sensor reading for the second timestep, $D_2 = 0$. Compute the
 posterior distribution $\mathbb P(C_2 = 1 \mid D_2 = 0)$. We encourage you to
 draw out the (factor) graph.
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% 📝_1a(.*?)% 📝_1a', f.read(), re.DOTALL)).group(1))
+🐍

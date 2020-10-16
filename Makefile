@@ -57,4 +57,5 @@ $(THIS_ASSIGNMENT)_Solutions.pdf: $(TEX_DEPENDENCIES)
 clean:
 	cd ./tex; latexmk -jobname="$(THIS_ASSIGNMENT)" -C
 	cd ./tex; latexmk -jobname="$(THIS_ASSIGNMENT)_Solutions" -C
+	rm -f $(THIS_ASSIGNMENT)*
 	rm -rf ./temp_tex_no_solutions

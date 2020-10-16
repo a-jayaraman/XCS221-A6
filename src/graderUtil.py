@@ -17,17 +17,23 @@ class graded():
                leaderboard_sort_order='desc',
                is_hidden = False,
                is_extra_credit = False,
-               timeout = 5):
+               timeout = 5,
+               after_published = False,
+               hide_errors = False):
     self.leaderboard_col_name = leaderboard_col_name
     self.leaderboard_sort_order = leaderboard_sort_order
     self.is_hidden = is_hidden
     self.is_extra_credit = is_extra_credit
     self.timeout = timeout
+    self.after_published = after_published
+    self.hide_errors = hide_errors
 
   def __call__(self, func):
     func = timeout_func(self.timeout)(func)
     func.__timeout__ = self.timeout
     func.__is_hidden__ = self.is_hidden
+    func.__after_published__ = self.after_published
+    func.__hide_errors__ = self.hide_errors
     func.__is_extra_credit__ = self.is_extra_credit
     func.__leaderboard_col_name__ = self.leaderboard_col_name
     func.__leaderboard_sort_order__ = self.leaderboard_sort_order
@@ -49,6 +55,7 @@ class graded():
         # SKip the test if it is hidden and the solution is not present
         # Do this at the end so that the student's code is run and the elapsed time is calculated.
         args[0].skipTest('Hidden tests are skipped if the solution is not present.')
+      return result
     return wrapper
 
 class timeout_func:
@@ -123,6 +130,14 @@ class GradedTestCase(unittest.TestCase):
   @property
   def isHidden(self):
     return getattr(getattr(self, self._testMethodName), '__is_hidden__', None)
+
+  @property
+  def hideErrors(self):
+    return getattr(getattr(self, self._testMethodName), '__hide_errors__', None)
+
+  @property
+  def afterPublished(self):
+    return getattr(getattr(self, self._testMethodName), '__after_published__', None)
 
   @property
   def isExtraCredit(self):
@@ -242,7 +257,7 @@ class GradescopeTestResult(unittest.TestResult):
 
   def storeResult(self, test, isSuccess, err=None):
     earned = test.earned if isSuccess else 0
-    visibility = 'after_published' if test.isHidden else 'visible'
+    visibility = 'after_published' if test.afterPublished else 'visible'
     test_result = {
       'score':earned,
       'max_score':test.weight,
@@ -251,7 +266,7 @@ class GradescopeTestResult(unittest.TestResult):
       'visibility':visibility,
       'extra_data':{'is_extra_credit':test.isExtraCredit}
     }
-    if err is not None:
+    if err is not None and not test.hideErrors:
       print(err)
       test_result['output'] = ''
       test_result['output'] += str(err[0]) + ':  '

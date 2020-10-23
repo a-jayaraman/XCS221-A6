@@ -109,7 +109,9 @@ class GradedTestCase(unittest.TestCase):
     self.loadWeights()
 
   def loadWeights(self):
-    with open('points.json') as f:
+    if os.path.exists('points.json'): path = 'points.json'
+    else: path = '../points.json'
+    with open(path) as f:
       self.weights = json.load(f)
 
   def id(self):

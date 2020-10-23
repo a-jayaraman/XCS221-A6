@@ -144,7 +144,7 @@ macros_prefix  += '  \\IfEqCase{#1}{\n'
 macros_suffix =  '  }[\\PackageError{points}{Cannot assign point value to unknown question: #1}{}]\n'
 macros_suffix += '}\n'
 # Load the points.json for that assignment
-with open(f'../src/points.json', 'r') as f:
+with open(f'../points.json', 'r') as f:
   points = json.load(f)
 # Accumulate all points by question id:
 question_values = {}

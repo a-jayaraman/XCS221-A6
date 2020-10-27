@@ -19,7 +19,8 @@ class graded():
                is_extra_credit = False,
                timeout = 5,
                after_published = False,
-               hide_errors = False):
+               hide_errors = False,
+               student_feedback=None):
     self.leaderboard_col_name = leaderboard_col_name
     self.leaderboard_sort_order = leaderboard_sort_order
     self.is_hidden = is_hidden
@@ -27,6 +28,7 @@ class graded():
     self.timeout = timeout
     self.after_published = after_published
     self.hide_errors = hide_errors
+    self.student_feedback = student_feedback
 
   def __call__(self, func):
     func = timeout_func(self.timeout)(func)
@@ -37,6 +39,7 @@ class graded():
     func.__is_extra_credit__ = self.is_extra_credit
     func.__leaderboard_col_name__ = self.leaderboard_col_name
     func.__leaderboard_sort_order__ = self.leaderboard_sort_order
+    func.__student_feedback__ = self.student_feedback
     @wraps(func)
     def wrapper(*args, **kwargs):
       # Method for storing result of leaderboard after test completes
@@ -144,6 +147,10 @@ class GradedTestCase(unittest.TestCase):
   @property
   def isExtraCredit(self):
     return getattr(getattr(self, self._testMethodName), '__is_extra_credit__', None)
+
+  @property
+  def studentFeedback(self):
+    return getattr(getattr(self, self._testMethodName), '__student_feedback__', None)
 
   @property
   def timeout(self):
@@ -268,9 +275,10 @@ class GradescopeTestResult(unittest.TestResult):
       'visibility':visibility,
       'extra_data':{'is_extra_credit':test.isExtraCredit}
     }
+    test_result['output'] = ''
+    if test.studentFeedback is not None:
+      test_result['output'] += test.studentFeedback + '\n'
     if err is not None and not test.hideErrors:
-      print(err)
-      test_result['output'] = ''
       test_result['output'] += str(err[0]) + ':  '
       test_result['output'] += str(err[1]) + '\n'
       test_result['output'] += ''.join(traceback.format_tb(err[2]))

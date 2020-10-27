@@ -32,7 +32,20 @@
 
 \lstset{style=mystyle}
 
+\newcommand{\di}{{d}}
+\newcommand{\nexp}{{n}}
+\newcommand{\nf}{{p}}
+\newcommand{\vcd}{{\textbf{D}}}
+
 \usepackage[hyperfootnotes=false]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor = blue,
+  urlcolor  = blue,
+  citecolor = blue,
+  anchorcolor = blue,
+  pdfborderstyle={/S/U/W 1}
+}
 \usepackage{nccmath}
 \usepackage{mathtools}
 \usepackage{graphicx,caption}
@@ -126,7 +139,7 @@
 \def\E{\mathbb{E}}
 \def\calN{\mathcal{N}}
 \def\calD{\mathcal{D}}
-\def\slack{\url{http://xcs229ii-scpd.slack.com/}}
+\def\slack{\url{http://xcs221-scpd.slack.com/}}
 \def\zipscriptalt{\texttt{python zip\_submission.py}}
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 

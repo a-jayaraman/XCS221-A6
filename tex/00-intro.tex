@@ -24,8 +24,8 @@ which allows us to track other cars based on noisy sensor readings.
 You will be running two files in this assignment - |grader.py| and |drive.py|.
 The |drive.py| file is not used for any grading purposes, it's just there to
 visualize the code you will be writing and help you gain an appreciation for how
-different approaches result in different behaviors (and to have fun!). Let's
-start by trying to drive manually.
+different approaches result in different behaviors (and to have fun!). Start by
+trying to drive manually.
 
 \begin{lstlisting}
 python drive.py -l lombard -i none
@@ -39,7 +39,7 @@ right. Note that you cannot reverse the car or turn in place. Quit by pressing
 getting in an accident. How well can you do on the windy Lombard street without
 knowing the location of other cars?  Don't worry if you're not very good; the
 teaching staff were only able to get to the finish line 4/10 times.  An accident
-rate of 60\% is pretty abysmal, which is why we're going to use AI to do this. 
+rate of 60\% is pretty abysmal, which is why you're going to use AI to do this. 
 
 Flags for |python drive.py|:
 \begin{itemize}
@@ -56,18 +56,18 @@ Flags for |python drive.py|:
 
 {\bf Modeling car locations.}
 
-We assume that the world is a two-dimensional rectangular grid on which your car
+Assume that the world is a two-dimensional rectangular grid on which your car
 and $K$ other cars reside. At each time step $t$, your car gets a noisy estimate
-of the distance to each of the cars.  As a simplifying assumption, we assume
+of the distance to each of the cars.  As a simplifying assumption, assume
 that each of the $K$ other cars moves independently and that the noise in sensor
-readings for each car is also independent. Therefore, in the following, we will
-reason about each car independently (notationally, we will assume there is just
+readings for each car is also independent. Therefore, in the following, 
+reason about each car independently (notationally, assume there is just
 one other car).
 
 At each time step $t$, let $C_t \in \mathbb R^2$ be a pair of coordinates representing the {\em actual} location of the single other car (which is
-unobserved). We assume there is a local conditional distribution $p(c_t \mid
+unobserved). Assume there is a local conditional distribution $p(c_t \mid
 c_{t-1})$ which governs the car's movement. Let $a_t \in \mathbb R^2$ be your
-car's position, which you observe and also control. To minimize costs, we use a
+car's position, which you observe and also control. To minimize costs, use a
 simple sensing system based on a microphone. The microphone provides us with
 $D_t$, which is a Gaussian random variable with mean equal to the true distance
 between your car and the other car and variance $\sigma^2$ (in the code,
@@ -95,9 +95,9 @@ will take care of using this information to actually drive the car (i.e., set
 $a_t$ to avoid a collision with $c_t$), so you don't have to worry about that
 part.
 
-To simplify things, we will discretize the world into {\bf tiles} represented by
+To simplify things, discretize the world into {\bf tiles} represented by
 |(row, col)| pairs, where |0 <= row < numRows| and |0 <= col < numCols|. For
-each tile, we store a probability representing our belief that there's a car on
+each tile, there is a stored probability representing the belief that there's a car on
 that tile. The values can be accessed by: |self.belief.getProb(row, col)|. To
 convert from a tile to a location, use |util.rowToY(row)| and
 |util.colToX(col)|.
@@ -114,17 +114,16 @@ Here's an overview of the assignment components:
   with particle-based representation of this same distribution.
   \item Problem 5 (written) gives you a chance to extend your probability analyses
   to a slightly more realistic scenario where there are multiple other cars and
-  we can't automatically distinguish between them.
+  you can't automatically distinguish between them.
 \end{itemize}
 \clearpage
 
-{\bf A few important notes before we get started: }  
+{\bf A few important notes before you get started: }  
 
 \begin{itemize}
 \item Past experience suggests that this will be one of the most conceptually
-  challenging assignments of the quarter for many students.  Please start early,
-  especially if you're low on late days!
-\item We strongly recommend that you attend/watch the lectures on Bayesian
+  challenging assignments for many students.  Please start early!
+\item You should watch the lectures on Bayesian
 networks and HMMs before getting started, and keep the slides handy for
 reference while you're working.
 \item The code portions of this assignment are short and straightforward -- no

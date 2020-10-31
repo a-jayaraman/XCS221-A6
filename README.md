@@ -104,7 +104,7 @@ $ make -s
 ```
 
 This command re-runs the default `make` target, which is, conveniently,
-`make with_solutions`.  Opening the file `\*_Solutions.pdf`, you should see
+`make submission.pdf`.  Opening thex file `submission.pdf`, you should see
 something like the following:
 
 <img src="https://render.githubusercontent.com/render/math?math=\LaTeX">

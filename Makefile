@@ -26,7 +26,7 @@ THIS_ASSIGNMENT = A6
 
 TEX_DEPENDENCIES = $(shell find tex -type f) points.json tex/meta.json
 
-.DEFAULT_GOAL := with_solutions
+.DEFAULT_GOAL := submission.pdf
 
 .PHONY: clean with_solutions without_solutions
 
@@ -53,6 +53,9 @@ $(THIS_ASSIGNMENT)_Solutions.pdf: $(TEX_DEPENDENCIES)
 	# 1. Make the latex document (see tex/latexmakerc for options)
 	# 2. Then clean it up (if it compiles without errors)
 	cd ./tex; latexmk -jobname="$(THIS_ASSIGNMENT)_Solutions" && latexmk -jobname="$(THIS_ASSIGNMENT)_Solutions" -c
+
+submission.pdf: $(TEX_DEPENDENCIES)
+	cd ./tex; latexmk submission.tex && latexmk submission.tex -c
 
 clean:
 	cd ./tex; latexmk -jobname="$(THIS_ASSIGNMENT)" -C

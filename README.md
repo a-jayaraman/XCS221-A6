@@ -1,5 +1,5 @@
 # XCS Student Code Repository
-This repository contains all code for the corresponding assignment in XCS229ii.
+This repository contains all code for your assignment!
 The build tools in this repo can be used to run the autograder locally or
 compile a LaTeX submission.
 
@@ -27,7 +27,7 @@ The unit tests in `src/grader.py` will be used to autograde your submission.
 Run the autograder locally using the following terminal command within the
 `src/` subdirectory:
 ```
-(XCS229ii) $ python grader.py
+(XCS_ENV) $ python grader.py
 ```
 
 There are two types of unit tests used by our autograders:
@@ -44,11 +44,11 @@ For debugging purposes, a single unit test can be run locally.  For example, you
 can run the test case `3a-0-basic` using the following terminal command within
 the `src/` subdirectory:
 ```
-(XCS229ii) $ python grader.py 3a-0-basic
+(XCS_ENV) $ python grader.py 3a-0-basic
 ```
 
 ## How to create a typeset submission using LaTeX
-You are welcome to typeset your submission in any legible format (including
+You are welcome to submit your solution in any legible format (including
 handwritten).  For those who are trying LaTeX for the first time, consider using
 the following build process (we've tried to streamline it as much as possible
 for you!).  All instructions that follow are for our build process, which will
@@ -104,7 +104,7 @@ $ make -s
 ```
 
 This command re-runs the default `make` target, which is, conveniently,
-`make submission.pdf`.  Opening thex file `submission.pdf`, you should see
+`make submission.pdf`.  Opening the file `submission.pdf`, you should see
 something like the following:
 
 <img src="https://render.githubusercontent.com/render/math?math=\LaTeX">

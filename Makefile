@@ -35,7 +35,7 @@ with_solutions: $(THIS_ASSIGNMENT)_Solutions.pdf
 without_solutions: $(THIS_ASSIGNMENT).pdf
 
 $(THIS_ASSIGNMENT).pdf: $(TEX_DEPENDENCIES)
-	# 1. Make and move into a temp filder where the tex files can be modified (solutions removed)
+	# 1. Make and move into a temp folder where the tex files can be modified (solutions removed)
 	# 2. Move into the temp directory and remove solution code.
 	# 3. Make the latex document and clean it up (if it compiles correctly)
 	# 4. Withdraw and remove the temp directory
@@ -43,6 +43,7 @@ $(THIS_ASSIGNMENT).pdf: $(TEX_DEPENDENCIES)
 	cp -a ./tex/* ./temp_tex_no_solutions/
 	cd ./temp_tex_no_solutions ; \
 	find "./" -name "*.tex" -exec sed -i '' '/.*START CODE HERE.*/,/.*END CODE HERE.*/{//!d;}' {} + ; \
+	find "./" -name "*.tex" -exec sed -i '' '/.*BEGIN_HIDE.*/,/.*END_HIDE.*/{//!d;}' {} + ; \
 	find "./" -name "*.tex" -exec sed -i '' '/SOLUTION ALERT/{N;d;}' {} + ; \
 	latexmk -jobname="$(THIS_ASSIGNMENT)" && latexmk -jobname="$(THIS_ASSIGNMENT)" -c ; \
 	cd .. ; \

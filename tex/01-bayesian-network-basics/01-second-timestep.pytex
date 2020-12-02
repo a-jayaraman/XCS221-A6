@@ -5,5 +5,5 @@ draw out the (factor) graph.
 
 🐍
 import re
-with open('submission.tex') as f: print((re.search(r'% 📝_1a(.*?)% 📝_1a', f.read(), re.DOTALL)).group(1))
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_1a(.*?)% <SCPD_SUBMISSION_TAG>_1a', f.read(), re.DOTALL)).group(1))
 🐍

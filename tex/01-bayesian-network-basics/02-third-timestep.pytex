@@ -6,5 +6,5 @@ moderately complex. We encourage you to draw out the (factor) graph.
 
 🐍
 import re
-with open('submission.tex') as f: print((re.search(r'% 📝_1b(.*?)% 📝_1b', f.read(), re.DOTALL)).group(1))
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_1b(.*?)% <SCPD_SUBMISSION_TAG>_1b', f.read(), re.DOTALL)).group(1))
 🐍

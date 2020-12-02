@@ -19,5 +19,5 @@ $D_{t1}, \dots, D_{tK}$.}
 
 🐍
 import re
-with open('submission.tex') as f: print((re.search(r'% 📝_5a(.*?)% 📝_5a', f.read(), re.DOTALL)).group(1))
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_5a(.*?)% <SCPD_SUBMISSION_TAG>_5a', f.read(), re.DOTALL)).group(1))
 🐍

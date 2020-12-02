@@ -7,5 +7,5 @@ Briefly justify your answer.
 
 🐍
 import re
-with open('submission.tex') as f: print((re.search(r'% 📝_5c(.*?)% 📝_5c', f.read(), re.DOTALL)).group(1))
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_5c(.*?)% <SCPD_SUBMISSION_TAG>_5c', f.read(), re.DOTALL)).group(1))
 🐍

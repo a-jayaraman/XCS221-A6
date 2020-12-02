@@ -12,5 +12,5 @@ It is acceptable to provide a clear explanation based on your intuitive understa
 
 🐍
 import re
-with open('submission.tex') as f: print((re.search(r'% 📝_5b(.*?)% 📝_5b', f.read(), re.DOTALL)).group(1))
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_5b(.*?)% <SCPD_SUBMISSION_TAG>_5b', f.read(), re.DOTALL)).group(1))
 🐍

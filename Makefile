@@ -59,6 +59,7 @@ submission.pdf: $(TEX_DEPENDENCIES)
 	cd ./tex; latexmk submission.tex && latexmk submission.tex -c
 
 clean:
+	cd ./tex; latexmk submission.tex -C
 	cd ./tex; latexmk -jobname="$(THIS_ASSIGNMENT)" -C
 	cd ./tex; latexmk -jobname="$(THIS_ASSIGNMENT)_Solutions" -C
 	rm -f $(THIS_ASSIGNMENT)*

@@ -7,6 +7,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
 \usepackage[dvipsnames]{xcolor}
+\usepackage{bm}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{framed}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -36,6 +40,43 @@
 \newcommand{\nexp}{{n}}
 \newcommand{\nf}{{p}}
 \newcommand{\vcd}{{\textbf{D}}}
+\newcommand{\Int}{\mathbb{Z}}
+\newcommand\bb{\ensuremath{\mathbf{b}}}
+\newcommand\bs{\ensuremath{\mathbf{s}}}
+\newcommand\bp{\ensuremath{\mathbf{p}}}
+\newcommand{\relu} { \operatorname{ReLU} }
+\newcommand{\smx} { \operatorname{softmax} }
+\newcommand\bx{\ensuremath{\mathbf{x}}}
+\newcommand\bh{\ensuremath{\mathbf{h}}}
+\newcommand\bc{\ensuremath{\mathbf{c}}}
+\newcommand\bW{\ensuremath{\mathbf{W}}}
+\newcommand\by{\ensuremath{\mathbf{y}}}
+\newcommand\bo{\ensuremath{\mathbf{o}}}
+\newcommand\be{\ensuremath{\mathbf{e}}}
+\newcommand\ba{\ensuremath{\mathbf{a}}}
+\newcommand\bu{\ensuremath{\mathbf{u}}}
+\newcommand\bv{\ensuremath{\mathbf{v}}}
+\newcommand\bP{\ensuremath{\mathbf{P}}}
+\newcommand\bg{\ensuremath{\mathbf{g}}}
+\newcommand\bX{\ensuremath{\mathbf{X}}}
+% real numbers R symbol
+\newcommand{\Real}{\mathbb{R}}
+
+% encoder hidden
+\newcommand{\henc}{\bh^{\text{enc}}}
+\newcommand{\hencfw}[1]{\overrightarrow{\henc_{#1}}}
+\newcommand{\hencbw}[1]{\overleftarrow{\henc_{#1}}}
+
+% encoder cell
+\newcommand{\cenc}{\bc^{\text{enc}}}
+\newcommand{\cencfw}[1]{\overrightarrow{\cenc_{#1}}}
+\newcommand{\cencbw}[1]{\overleftarrow{\cenc_{#1}}}
+
+% decoder hidden
+\newcommand{\hdec}{\bh^{\text{dec}}}
+
+% decoder cell
+\newcommand{\cdec}{\bc^{\text{dec}}}
 
 \usepackage[hyperfootnotes=false]{hyperref}
 \hypersetup{
@@ -49,7 +90,7 @@
 \usepackage{nccmath}
 \usepackage{mathtools}
 \usepackage{graphicx,caption}
-\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
 \usepackage{epstopdf,subcaption}
 \usepackage{psfrag}
 \usepackage{amsmath,amssymb,epsf}
@@ -132,6 +173,8 @@
 \newcommand{\mc}[1]{\mathcal{#1}}
 \newcommand{\half}{\frac{1}{2}}
 
+\DeclareMathOperator*{\argmin}{arg\,min}
+
 \def\KL{D_{KL}}
 \def\xsi{x^{(i)}}
 \def\ysi{y^{(i)}}
@@ -139,7 +182,7 @@
 \def\E{\mathbb{E}}
 \def\calN{\mathcal{N}}
 \def\calD{\mathcal{D}}
-\def\slack{\url{http://xcs221-scpd.slack.com/}}
+\def\slack{\url{http://xcs224n-scpd.slack.com/}}
 \def\zipscriptalt{\texttt{python zip\_submission.py}}
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
  
@@ -147,3 +190,26 @@
 \usepackage{pifont}
 \usepackage{wasysym}
 \usepackage{amssymb}
+\usepackage{framed}
+\usepackage{scrextend}
+
+\newcommand{\alns}[1] {
+	\begin{align*} #1 \end{align*}
+}
+
+\newcommand{\pd}[2] {
+ \frac{\partial #1}{\partial #2}
+}
+\renewcommand{\Re} { \mathbb{R} }
+\newcommand{\btx} { \mathbf{\tilde{x}} }
+\newcommand{\bth} { \mathbf{\tilde{h}} }
+\newcommand{\sigmoid} { \operatorname{\sigma} }
+\newcommand{\CE} { \operatorname{CE} }
+\newcommand{\byt} { \hat{\by} }
+\newcommand{\yt} { \hat{y} }
+
+\newcommand{\oft}[1]{^{(#1)}}
+\newcommand{\fone}{\ensuremath{F_1}}
+
+\newcommand{\ac}[1]{ {\color{red} \textbf{AC:} #1} }
+\newcommand{\ner}[1]{\textbf{\color{blue} #1}}

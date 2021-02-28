@@ -2,33 +2,32 @@
 import json
 
 # Load the meta.json for this assignment
-with open(f'meta.json', 'r') as f:
+with open(f'../meta.json', 'r') as f:
   meta = json.load(f)
 
 if "preamble" in meta:
-  print(meta['preamble'])
+  print(meta['tex_preamble'])
 
-if meta['show_guidelines']:
+if meta['tex_show_guidelines']:
   print(
 R'''\input{00-instructions/01-general}
 \bigskip
 ''')
 
-if meta['show_submission_instructions']:
+if meta['tex_show_submission_instructions']:
   print(R'''
 \input{00-instructions/02-submission}
 \bigskip
 ''')
 
-if meta['show_honor_code']:
+if meta['tex_show_honor_code']:
   print(
 R'''\input{00-instructions/03-honor-code}
 \bigskip
 ''')
 
-print(R'\clearpage')
-
-if meta['show_autograder_instructions']:
+if meta['tex_show_autograder_instructions']:
+  print(R'\clearpage')
   print(R'''
 \input{00-instructions/04-autograder}
 \bigskip''')

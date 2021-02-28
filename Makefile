@@ -24,7 +24,7 @@ SHELL = /bin/sh
 
 THIS_ASSIGNMENT = A6
 
-TEX_DEPENDENCIES = $(shell find tex -type f) points.json tex/meta.json
+TEX_DEPENDENCIES = $(shell find tex -type f) points.json meta.json
 
 .DEFAULT_GOAL := submission.pdf
 

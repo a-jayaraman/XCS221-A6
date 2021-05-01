@@ -5,5 +5,6 @@
   "tex_show_submission_instructions":true,
   "tex_show_autograder_instructions":true,
   "tex_preamble":"",
+  "tex_show_test_cases":true,
   "multifile_coding_submission":false
 }

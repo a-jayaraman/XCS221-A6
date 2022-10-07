@@ -26,7 +26,7 @@ class ExactInference(object):
 
 
     ##################################################################################
-    # Problem 2:
+    # Problem 1:
     # Function: Observe (update the probabilities based on an observation)
     # -----------------
     # Takes |self.belief| -- an object of class Belief, defined in util.py --
@@ -50,7 +50,7 @@ class ExactInference(object):
         # ### END CODE HERE ###
 
     ##################################################################################
-    # Problem 3:
+    # Problem 2:
     # Function: Elapse Time (propose a new belief distribution based on a learned transition model)
     # ---------------------
     # Takes |self.belief| and updates it based on the passing of one time step.
@@ -126,7 +126,7 @@ class ParticleFilter(object):
         self.belief = newBelief
 
     ##################################################################################
-    # Problem 4 (part a):
+    # Problem 3 (part a):
     # Function: Observe:
     # -----------------
     # Takes |self.particles| and updates them based on the distance observation
@@ -169,7 +169,7 @@ class ParticleFilter(object):
         self.updateBelief()
 
     ##################################################################################
-    # Problem 4 (part b):
+    # Problem 3 (part b):
     # Function: Elapse Time (propose a new belief distribution based on a learned transition model)
     # ---------------------
     # Reads |self.particles|, representing particle locations at time $t$, and

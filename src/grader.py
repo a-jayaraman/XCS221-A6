@@ -16,10 +16,10 @@ import submission
 # TESTS #
 #########
 
-class Test_2a(GradedTestCase):
+class Test_1a(GradedTestCase):
   @graded()
   def test_0(self):
-    """2a-0-basic:  2a basic test for emission probabilities"""
+    """1a-0-basic:  1a basic test for emission probabilities"""
     ei = submission.ExactInference(10, 10)
     ei.skipElapse = True ### ONLY FOR PROBLEM 2
     ei.observe(55, 193, 200)
@@ -36,7 +36,7 @@ class Test_2a(GradedTestCase):
 
   @graded(is_hidden=True)
   def test_1(self):
-    """2a-1-hidden:  2a test ordering of pdf"""
+    """1a-1-hidden:  1a test ordering of pdf"""
     oldpdf = util.pdf
     del util.pdf
     def pdf(a, b, c): # be super rude to them! You can't swap a and c now!
@@ -56,7 +56,7 @@ class Test_2a(GradedTestCase):
 
   @graded(is_hidden=True)
   def test_2(self):
-    """2a-2-hidden:  2a advanced test for emission probabilities"""
+    """1a-2-hidden:  1a advanced test for emission probabilities"""
     random.seed(10)
 
     ei = submission.ExactInference(10, 10)
@@ -77,10 +77,10 @@ class Test_2a(GradedTestCase):
 
     # BEGIN_HIDE
     # END_HIDE
-class Test_3a(GradedTestCase):
+class Test_2a(GradedTestCase):
   @graded()
   def test_0(self):
-    """3a-0-basic:  test correctness of elapseTime()"""
+    """2a-0-basic:  test correctness of elapseTime()"""
     ei = submission.ExactInference(30, 13)
     ei.elapseTime()
     self.assertAlmostEqual(0.0105778989624, ei.belief.getProb(16, 6), places = 4)
@@ -96,7 +96,7 @@ class Test_3a(GradedTestCase):
 
   @graded(is_hidden=True)
   def test_1i(self):
-    """3a-1i-hidden:  Advanced test for transition probabilities, strict time limit."""
+    """2a-1i-hidden:  Advanced test for transition probabilities, strict time limit."""
     A = 30
     B = 30
     random.seed(15)
@@ -117,7 +117,7 @@ class Test_3a(GradedTestCase):
 
   @graded(timeout=20, is_hidden=True)
   def test_1ii(self):
-    """3a-1ii-hidden:  3a test for transition probabilities on other maps, loose time limit"""
+    """2a-1ii-hidden:  2a test for transition probabilities on other maps, loose time limit"""
     random.seed(15)
 
     oldworld = Const.WORLD
@@ -143,7 +143,7 @@ class Test_3a(GradedTestCase):
 
   @graded(is_hidden=True)
   def test_2(self):
-    """3a-2-hidden:  advanced test for emission AND transition probabilities, strict time limit"""
+    """2a-2-hidden:  advanced test for emission AND transition probabilities, strict time limit"""
     random.seed(20)
 
     A = 30
@@ -168,10 +168,10 @@ class Test_3a(GradedTestCase):
 
     # BEGIN_HIDE
     # END_HIDE
-class Test_4a(GradedTestCase):
+class Test_3a(GradedTestCase):
   @graded()
   def test_0(self):
-    """4a-0-basic:  4a basic test for PF observe"""
+    """3a-0-basic:  3a basic test for PF observe"""
     random.seed(3)
 
     pf = submission.ParticleFilter(30, 13)
@@ -190,7 +190,7 @@ class Test_4a(GradedTestCase):
 
   @graded()
   def test_1(self):
-    """4a-1-basic:  4a basic test for PF elapseTime"""
+    """3a-1-basic:  3a basic test for PF elapseTime"""
     random.seed(3)
     pf = submission.ParticleFilter(30, 13)
     self.assertAlmostEqual(69, len([k for k,v in list(pf.particles.items()) if v > 0]), places=4) # This should not fail unless your code changed the random initialization code.
@@ -223,7 +223,7 @@ class Test_4a(GradedTestCase):
 
   @graded()
   def test_2(self):
-    """4a-2-basic:  4a basic test for PF observe AND elapseTime"""
+    """3a-2-basic:  3a basic test for PF observe AND elapseTime"""
     random.seed(3)
     pf = submission.ParticleFilter(30, 13)
     self.assertAlmostEqual(69,  len([k for k,v in list(pf.particles.items()) if v > 0]), places=4) # This should not fail unless your code changed the random initialization code.
@@ -252,7 +252,7 @@ class Test_4a(GradedTestCase):
 
   @graded(is_hidden=True)
   def test_3i(self):
-    """4a-3i-hidden:  4a advanced test for PF observe"""
+    """3a-3i-hidden:  3a advanced test for PF observe"""
     random.seed(34)
     A = 30
     B = 30
@@ -282,7 +282,7 @@ class Test_4a(GradedTestCase):
 
   @graded(is_hidden=True)
   def test_3ii(self):
-    """4a-3ii-hidden:  4a test for pdf ordering"""
+    """3a-3ii-hidden:  3a test for pdf ordering"""
     random.seed(34)
 
     oldpdf = util.pdf
@@ -321,7 +321,7 @@ class Test_4a(GradedTestCase):
 
   @graded(is_hidden=True)
   def test_4(self):
-    """4a-4-hidden:  advanced test for PF elapseTime"""
+    """3a-4-hidden:  advanced test for PF elapseTime"""
     A = 30
     B = 30
     random.seed(35)
@@ -349,7 +349,7 @@ class Test_4a(GradedTestCase):
 
   @graded(is_hidden=True)
   def test_5(self):
-    """4a-5-hidden:  advanced test for PF observe AND elapseTime"""
+    """3a-5-hidden:  advanced test for PF observe AND elapseTime"""
     A = 30
     B = 30
     random.seed(36)

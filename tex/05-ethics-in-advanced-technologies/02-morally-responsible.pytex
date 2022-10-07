@@ -1,0 +1,25 @@
+\item \points{5b}
+Dual-use technologies are technologies that serve two purposes, typically a military and a civilian purpose.
+Researchers developing dual-use technologies face a moral dilemma: though they may intend to improve only the
+peaceful use of the technology, any improvements they make aid others who use the technology in war or in
+non-state attacks or killings. Tracking of the kind developed in this assignment can be used in self-driving
+cars or in autonomous weapons systems, such as lethal drones that track people to kill them.\\
+
+Imagine a researcher who develops a dual-use technology despite knowing about the lethal secondary use of
+the technology and despite the researcher considering this secondary use unethical. Would the researcher
+be partially morally responsible for  improvements to the lethal use of the technology that result from
+their discoveries?  If not, give one reason why not. If so, explain why they are partially responsible and
+explain what action(s) the researcher should take to address this (choosing another line of research,
+building a safeguard, or other)?
+
+\textbf{What we expect:} A 3-6 sentence response that
+\begin{itemize}
+    \item answers yes or no to whether the researcher would be partially morally responsible
+    \item provides a reason why they would or would not be partially morally responsible
+    \item if yes, describes an action they should take
+\end{itemize}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_5b(.*?)% <SCPD_SUBMISSION_TAG>_5b', f.read(), re.DOTALL)).group(1))
+🐍

@@ -1,0 +1,28 @@
+\item \points{5a}
+You are in charge of public policy for an autonomous vehicle company headquartered in California. 
+Your engineering team is making progress in designing a fully automated vehicle and would like to test it on real
+roadways. California would require that you apply for autonomous vehicle testing permits and meet regulatory
+standards designed to protect the safety of other motorists and pedestrians. Given these regulations,
+testing your vehicles in California secretly without a permit would be illegal.
+The Governor of Arizona has reached out to offer your company testing in the state without restrictions. 
+Doing so would allow you to test more quickly and without making any changes to your vehicles\footnote{\href{https://www.theguardian.com/technology/2018/mar/28/uber-arizona-secret-self-driving-program-governor-doug-ducey}{link}}. On the other hand,
+testing in Arizona could be considered “ethics dumping,” namely “doing research deemed unethical in a scientist’s
+home country in a country or region with laxer ethical rules” and regulations\footnote{Thanks to Rob Reich for this example. For a discussion of ethics dumping, see \href{https://www.nature.com/articles/d41586-018-05616-w}{this}}. \\
+
+
+Would testing in Arizona be “ethics dumping”? Be sure to explain why you think it is  or isn’t.
+Given your answer to this question and other factors you consider to be relevant, should you perform your
+tests in Arizona or comply with Californian standards? Justify your answer with a reason as to why. 
+
+\textbf{What we expect:} In 3-6 sentences, we expect:
+\begin{itemize}
+    \item a yes or no answer to the ethics dumping question
+    \item an explanation of why it is or isn’t ethics dumping given the definition above
+    \item a yes or no answer to whether the tests should be done in Arizona or California
+    \item an explanation that justifies why the tests should be done in Arizona or California<
+\end{itemize}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_5a(.*?)% <SCPD_SUBMISSION_TAG>_5a', f.read(), re.DOTALL)).group(1))
+🐍

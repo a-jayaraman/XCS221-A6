@@ -5,6 +5,13 @@ the sensor readings:
 \[\mathbb P(C_{11} = c_{11}, \dots, C_{1K} = c_{1K}, \dots, C_{T1} = c_{T1}, \dots, C_{TK} = c_{TK} \mid E_1 = e_1, \dots, E_T = e_T)?\]
 Briefly justify your answer.
 
+For reference, the treewidth of a factor graph is defined as the maximum arity (number of variables that a factor depends on) of any factor created 
+by variable elimination under the best variable elimination ordering. 
+You can find further information, along with an example, that may be relevant to this problem 
+\href{https://stanford.edu/~shervine/teaching/cs-221/cheatsheet-variables-models}{here}.
+
+\textbf{Note}: the conditioning is already done, so the only factors remaining are for $C_{ti}$ variables.
+
 🐍
 import re
 with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_4c(.*?)% <SCPD_SUBMISSION_TAG>_4c', f.read(), re.DOTALL)).group(1))

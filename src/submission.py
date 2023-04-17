@@ -170,7 +170,7 @@ class ParticleFilter(object):
 
     ##################################################################################
     # Problem 3 (part b):
-    # Function: Elapse Time (propose a new belief distribution based on a learned transition model)
+    # Function: Elapse Time (propose the particle distribution at time $t+1$)
     # ---------------------
     # Reads |self.particles|, representing particle locations at time $t$, and
     # writes an updated |self.particles| with particle locations at time $t+1$.

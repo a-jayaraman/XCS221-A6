@@ -46,13 +46,16 @@ class Test_1a(GradedTestCase):
     ei = submission.ExactInference(10, 10)
     ei.skipElapse = True ### ONLY FOR PROBLEM 2
     ei.observe(55, 193, 200)
+
+    util.pdf = oldpdf # replace the old pdf
+    
     # BEGIN_HIDE
     # END_HIDE
 
     ei.observe(80, 250, 150)
     # BEGIN_HIDE
     # END_HIDE
-    util.pdf = oldpdf # replace the old pdf
+    
 
   @graded(is_hidden=True)
   def test_2(self):

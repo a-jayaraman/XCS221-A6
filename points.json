@@ -20,6 +20,9 @@
   "4b" : {"points":3, "question_id":"4b", "is_written":true, "is_extra_credit":false},
   "4c" : {"points":2, "question_id":"4c", "is_written":true, "is_extra_credit":false},
 
-  "5a" : {"points":4, "question_id":"5a", "is_written":true, "is_extra_credit":false},
-  "5b" : {"points":4, "question_id":"5b", "is_written":true, "is_extra_credit":false}
+  "5a" : {"points":2, "question_id":"5a", "is_written":true, "is_extra_credit":false},
+  "5b" : {"points":2, "question_id":"5b", "is_written":false, "is_extra_credit":false},
+  "5c" : {"points":1, "question_id":"5c", "is_written":true, "is_extra_credit":false},
+  "5d" : {"points":2, "question_id":"5d", "is_written":true, "is_extra_credit":false},
+  "5e" : {"points":1, "question_id":"5e", "is_written":true, "is_extra_credit":false}
 }

@@ -1,0 +1,15 @@
+\item \points{5e}
+
+Assume that because particle filtering is more efficient, we can run the model on-device 
+(vs. exact inference which requires us to run the model in the cloud). By keeping all of the relevant data on-device, 
+we improve the privacy (security) of the data, but decrease the accuracy of the model. 
+While the car can still sometimes make its way down Lombard effectively, it has a less accurate picture of other car locations. 
+How would you weigh this trade-off?
+
+\textbf{What we expect:} In 3-5 sentences, discuss how you would evaluate the privacy accuracy trade-off outlined above. 
+
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_5e(.*?)% <SCPD_SUBMISSION_TAG>_5e', f.read(), re.DOTALL)).group(1))
+🐍

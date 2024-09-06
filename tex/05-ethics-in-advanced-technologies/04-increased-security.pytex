@@ -1,0 +1,15 @@
+\item \points{5d}
+
+One way of increasing security and preventing adversarial attacks is by keeping data on-device. 
+Assume that we are now using particle filtering, which is a more efficient, Monte-Carlo based method for car tracking. 
+Though exact inference works well for small maps, it can be too slow on large worlds such as lombard. With particle filtering, the complexity of the program 
+is $O(numParticles)$ as opposed to $O(numTiles)$. Simply run |python drive.py -a -d -k 3 -i particleFilter| to observe the behavior. 
+Comment on how the simulation looks different from the exact inference case and provide a reason why.
+
+\textbf{What we expect:} In 1-2 sentences, comment on the differences in the simulation with exactInference and particleFilter.
+
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_5d(.*?)% <SCPD_SUBMISSION_TAG>_5d', f.read(), re.DOTALL)).group(1))
+🐍

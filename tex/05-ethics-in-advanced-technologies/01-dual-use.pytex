@@ -1,0 +1,28 @@
+\item \points{5a}
+Dual-use technologies serve two purposes: one with positive consequences and one with negative consequences. 
+Researchers developing dual-use technologies face a moral dilemma: though they may intend to improve only peaceful, 
+socially beneficial use of the technology, any improvements they make may also aid others who use the technology for harm. 
+For example, tracking of the kind developed in this assignment can be used both in self-driving cars or in surveillance-tracking 
+and autonomous weapons systems, such as lethal drones. To learn more about dual use technologies, refer back to the Externalities 
+and Dual Use Technologies module \href{https://drive.google.com/file/d/1gbzdQ8nmGHsKLLL838uuBPoiEdb6ICnt/view}{(video,}
+\href{https://stanford-cs221.github.io/autumn2023-extra/modules/search/externalities-and-dual-use-technologies.pdf}{pdf).}
+
+
+When integrating tracking technologies into self-driving cars, we have to make decisions regarding the tradeoff between the accuracy of the 
+tracking technology and the privacy of the other cars and people on the road. These decisions impact the ways in which the tracking technology 
+might be misused for negative aims. The microphone sensor used in Problems 1-3 preserves privacy relatively well; it only gives us a noisy 
+distance reading. However, in practice, self-driving cars often use cameras (which provide more accurate readings than microphones), 
+but also collect lots of visual information including, but not limited to, pedestrians’ faces and license plate numbers of other vehicles. 
+
+    
+How might the data collected by a camera sensor and/or the output of its reading be misused? 
+What measures, if any, could you take to preempt this misuse? 
+
+\textbf{What we expect:} In 4-6 sentences, describe a potential misuse of the car tracking technology considered and what measures you might take to
+ preempt such misuse, or explain why there are no such measures.
+
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_5a(.*?)% <SCPD_SUBMISSION_TAG>_5a', f.read(), re.DOTALL)).group(1))
+🐍

@@ -1,0 +1,11 @@
+\item \points{5c}
+
+Comment on how one can guard against sensor deception if the type of attack is known beforehand (hint: consider redundancy of sensors).
+
+\textbf{What we expect:} In 1-2 sentences, describe a way of guarding against sensor deception. 
+
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_5c(.*?)% <SCPD_SUBMISSION_TAG>_5c', f.read(), re.DOTALL)).group(1))
+🐍

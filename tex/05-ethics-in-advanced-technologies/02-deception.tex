@@ -1,0 +1,26 @@
+\item \points{5b}
+
+Self-driving cars and tracking technologies can potentially be hacked by bad actors to purposefully cause unsafe behavior 
+(e.g., to harm people within a specific community). Research on adversarial ML focuses on how attacks like these can be carried out 
+against machine learning systems and how to develop safeguards against such attacks.
+See \href{https://www.technologyreview.com/2017/08/22/242124/hackers-are-the-real-obstacle-for-self-driving-vehicles/}{https://www.technologyreview.com/2017/08/22/242124/hackers-are-the-real-obstacle-for-self-driving-vehicles/}.
+    
+Two specific examples of adversarial ML attacks on self-driving cars include: 
+
+\begin{itemize}
+    \item "Cloaking and stealthy attacks" to hide the presence of another vehicle from being detected
+    \item Sensor deception to make it seem like vehicles are closer or farther than they actually are
+\end{itemize}
+    
+Assume that sensor deception affects the problem setup from Problem 2 as follows. 
+The observed distance $D_{t}^{'}$ after attack (see below) is now a skewed Gaussian distribution. 
+To apply skewness, apply the adjustment below to the observed distance variable in 
+|submission.py| |ExactInferenceWithSensorDeception.observe()| (we are using a technique called Box-Muller transform 
+but you don’t need to know the details of this method for this problem). The skewness factor is set in the 
+|__init__| constructor with a default value of 0.5 (and you can assume the factor will always be greater than 0). 
+Implement this change in the code and rerun |python drive.py -a -p -d -k 3 -i exactInferenceWithSensorDeception| to observe any changes. 
+
+$D_{t}^{'} = \frac{1}{(1+\text{skewness}^2)} * D_t + \sqrt{2 * \frac{1}{(1+\text{skewness}^2)}}$
+
+\textbf{What we expect:} Update the code in |submission.py| |observe()| for class |ExactInferenceWithSensorDeception|. 
+

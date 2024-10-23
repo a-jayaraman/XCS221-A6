@@ -202,3 +202,51 @@ class ParticleFilter(object):
     # belief probabilities should sum to 1.
     def getBelief(self):
         return self.belief
+
+# Class: ExactInferenceWithSensorDeception
+# ---------------------
+# Same as ExactInference except with sensor deception attack represented in the
+# observation function.
+class ExactInferenceWithSensorDeception(ExactInference):
+
+    # Function: Init
+    # --------------
+    # Constructor that initializes an ExactInference object which has
+    # numRows x numCols number of tiles, as well as a skewness factor
+    # used to calculate the skewed observed distance distribution.
+    def __init__(self, numRows: int, numCols: int, skewness: float = 0.5):
+        super().__init__(numRows, numCols)
+        self.skewness = skewness
+
+    ##################################################################################
+    # Problem 5 (part b):
+    # Function: Observe with sensor deception (update the probabilities based on an observation)
+    # -----------------
+    # Apply the adjustment to observed distance based on the transformation
+    # D_t_' = 1/(1+skewness**2) * D_t + sqrt(2 * (1/(1+skewness**2))) then copy
+    # your previous observe() implementation from ExactInference() to update the probabilities.
+    # Note that the skewness parameter is set in the constructor.
+    #
+    # - agentX: x location of your car (not the one you are tracking)
+    # - agentY: y location of your car (not the one you are tracking)
+    # - observedDist: true distance plus a mean-zero Gaussian with standard
+    #                 deviation Const.SONAR_STD
+    #
+    # Notes:
+    # - Convert row and col indices into locations using util.rowToY and util.colToX.
+    # - util.pdf: computes the probability density function for a Gaussian
+    # - Although the gaussian pdf is symmetric with respect to the mean and value,
+    #   you should pass arguments to util.pdf in the correct order
+    # - Don't forget to normalize self.belief after you update its probabilities!
+    ##################################################################################
+
+    def observe(self, agentX: int, agentY: int, observedDist: float):
+        pass
+        # ### START CODE HERE ###
+        # ### END CODE HERE ###
+
+    def elapseTime(self):
+        super().elapseTime()
+
+    def getBelief(self):
+        return super().getBelief()

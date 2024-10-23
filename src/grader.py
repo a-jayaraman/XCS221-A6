@@ -387,6 +387,25 @@ class Test_3a(GradedTestCase):
     # BEGIN_HIDE
     # END_HIDE
 
+  @graded()
+  def test_6(self):
+    """5b-1-basic:  5b basic test for sensor deception"""
+
+    ei = submission.ExactInferenceWithSensorDeception(10, 10, 0.5)
+    ei.skipElapse = True ### ONLY FOR PROBLEM 1
+    ei.observe(110, 385, 400)
+    
+    self.assertAlmostEqual(0.0005653754944143804, ei.belief.getProb(0, 0), places=4)
+    self.assertAlmostEqual(0.04986537275117204, ei.belief.getProb(2, 4), places=4)
+    self.assertAlmostEqual(0.004000027030192286, ei.belief.getProb(4, 7), places=4)
+    self.assertAlmostEqual(0.007581706573375535, ei.belief.getProb(5, 9), places=4)
+
+    ei.observe(130, 400, 350)
+    self.assertAlmostEqual(5.292221225453018e-11, ei.belief.getProb(0, 0), places=4)
+    self.assertAlmostEqual(0.032898084958859534, ei.belief.getProb(2, 4), places=4)
+    self.assertAlmostEqual(0.028946975625511615, ei.belief.getProb(4, 7), places=4)
+    self.assertAlmostEqual(0.05486649808182239, ei.belief.getProb(5, 9), places=4)
+
 def getTestCaseForTestID(test_id):
   question, part, _ = test_id.split('-')
   g = globals().copy()

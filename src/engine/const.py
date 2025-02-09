@@ -2,7 +2,7 @@
 
 class Const(object):
     
-    INFERENCE_TYPES = ['none', 'particleFilter', 'exactInference']
+    INFERENCE_TYPES = ['none', 'particleFilter', 'exactInference', 'exactInferenceWithSensorDeception']
     TITLE = "Driverless Car Simulator"
     SONAR_STD = 20.0
     

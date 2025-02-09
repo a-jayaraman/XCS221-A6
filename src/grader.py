@@ -174,237 +174,240 @@ class Test_2a(GradedTestCase):
     # BEGIN_HIDE
     # END_HIDE
 class Test_3a(GradedTestCase):
-  @graded()
-  def test_0(self):
-    """3a-0-basic:  3a basic test for PF observe"""
-    random.seed(3)
+    @graded()
+    def test_0(self):
+        """3a-0-basic:  3a basic test for PF observe"""
+        random.seed(3)
 
-    pf = submission.ParticleFilter(30, 13)
+        pf = submission.ParticleFilter(30, 13)
 
-    pf.observe(555, 193, 800)
-    self.assertAlmostEqual(0.02, pf.belief.getProb(20, 4), places=4)
-    self.assertAlmostEqual(0.04, pf.belief.getProb(21, 5), places=4)
-    self.assertAlmostEqual(0.94, pf.belief.getProb(22, 6), places=4)
-    self.assertAlmostEqual(0.0, pf.belief.getProb(8, 4), places=4)
+        pf.observe(555, 193, 800)
+        self.assertAlmostEqual(0.02, pf.belief.getProb(20, 4), places=4)
+        self.assertAlmostEqual(0.04, pf.belief.getProb(21, 5), places=4)
+        self.assertAlmostEqual(0.94, pf.belief.getProb(22, 6), places=4)
+        self.assertAlmostEqual(0.0, pf.belief.getProb(8, 4), places=4)
 
-    pf.observe(525, 193, 830)
-    self.assertAlmostEqual(0.0, pf.belief.getProb(20, 4), places=4)
-    self.assertAlmostEqual(0.0, pf.belief.getProb(21, 5), places=4)
-    self.assertAlmostEqual(1.0, pf.belief.getProb(22, 6), places=4)
-    self.assertAlmostEqual(0.0, pf.belief.getProb(8, 4), places=4)
+        pf.observe(525, 193, 830)
+        self.assertAlmostEqual(0.0, pf.belief.getProb(20, 4), places=4)
+        self.assertAlmostEqual(0.0, pf.belief.getProb(21, 5), places=4)
+        self.assertAlmostEqual(1.0, pf.belief.getProb(22, 6), places=4)
+        self.assertAlmostEqual(0.0, pf.belief.getProb(8, 4), places=4)
 
-  @graded()
-  def test_1(self):
-    """3a-1-basic:  3a basic test for PF elapseTime"""
-    random.seed(3)
-    pf = submission.ParticleFilter(30, 13)
-    self.assertAlmostEqual(69, len([k for k,v in list(pf.particles.items()) if v > 0]), places=4) # This should not fail unless your code changed the random initialization code.
+    @graded()
+    def test_1(self):
+        """3a-1-basic:  3a basic test for PF elapseTime"""
+        random.seed(3)
+        pf = submission.ParticleFilter(30, 13)
+        self.assertAlmostEqual(69, len([k for k,v in list(pf.particles.items()) if v > 0]), places=4) # This should not fail unless your code changed the random initialization code.
 
-    pf.elapseTime()
-    self.assertAlmostEqual(200, sum(pf.particles.values()), places=4) # Do not lose particles
-    self.assertAlmostEqual(58, len([k for k,v in list(pf.particles.items()) if v > 0]), places=4) # Most particles lie on the same (row, col) locations
+        pf.elapseTime()
+        self.assertAlmostEqual(200, sum(pf.particles.values()), places=4) # Do not lose particles
+        self.assertAlmostEqual(58, len([k for k,v in list(pf.particles.items()) if v > 0]), places=4) # Most particles lie on the same (row, col) locations
 
-    self.assertAlmostEqual(6, pf.particles[(3,9)], places=4)
-    self.assertAlmostEqual(0, pf.particles[(2,10)], places=4)
-    self.assertAlmostEqual(3, pf.particles[(8,4)], places=4)
-    self.assertAlmostEqual(2, pf.particles[(12,6)], places=4)
-    self.assertAlmostEqual(2, pf.particles[(7,8)], places=4)
-    self.assertAlmostEqual(2, pf.particles[(11,6)], places=4)
-    self.assertAlmostEqual(0, pf.particles[(18,7)], places=4)
-    self.assertAlmostEqual(1, pf.particles[(20,5)], places=4)
+        self.assertAlmostEqual(6, pf.particles[(3,9)], places=4)
+        self.assertAlmostEqual(0, pf.particles[(2,10)], places=4)
+        self.assertAlmostEqual(3, pf.particles[(8,4)], places=4)
+        self.assertAlmostEqual(2, pf.particles[(12,6)], places=4)
+        self.assertAlmostEqual(2, pf.particles[(7,8)], places=4)
+        self.assertAlmostEqual(2, pf.particles[(11,6)], places=4)
+        self.assertAlmostEqual(0, pf.particles[(18,7)], places=4)
+        self.assertAlmostEqual(1, pf.particles[(20,5)], places=4)
 
-    pf.elapseTime()
-    self.assertAlmostEqual(200, sum(pf.particles.values()), places=4) # Do not lose particles
-    self.assertAlmostEqual(57, len([k for k,v in list(pf.particles.items()) if v > 0]), places=4) # Slightly more particles lie on the same (row, col) locations
+        pf.elapseTime()
+        self.assertAlmostEqual(200, sum(pf.particles.values()), places=4) # Do not lose particles
+        self.assertAlmostEqual(57, len([k for k,v in list(pf.particles.items()) if v > 0]), places=4) # Slightly more particles lie on the same (row, col) locations
 
-    self.assertAlmostEqual(4, pf.particles[(3,9)], places=4)
-    self.assertAlmostEqual(0, pf.particles[(2,10)], places=4) # 0 --> 0
-    self.assertAlmostEqual(5, pf.particles[(8,4)], places=4)
-    self.assertAlmostEqual(3, pf.particles[(12,6)], places=4)
-    self.assertAlmostEqual(0, pf.particles[(7,8)], places=4)
-    self.assertAlmostEqual(2, pf.particles[(11,6)], places=4)
-    self.assertAlmostEqual(0, pf.particles[(18,7)], places=4) # 0 --> 1
-    self.assertAlmostEqual(1, pf.particles[(20,5)], places=4) # 1 --> 0
+        self.assertAlmostEqual(4, pf.particles[(3,9)], places=4)
+        self.assertAlmostEqual(0, pf.particles[(2,10)], places=4) # 0 --> 0
+        self.assertAlmostEqual(5, pf.particles[(8,4)], places=4)
+        self.assertAlmostEqual(3, pf.particles[(12,6)], places=4)
+        self.assertAlmostEqual(0, pf.particles[(7,8)], places=4)
+        self.assertAlmostEqual(2, pf.particles[(11,6)], places=4)
+        self.assertAlmostEqual(0, pf.particles[(18,7)], places=4) # 0 --> 1
+        self.assertAlmostEqual(1, pf.particles[(20,5)], places=4) # 1 --> 0
 
-  @graded()
-  def test_2(self):
-    """3a-2-basic:  3a basic test for PF observe AND elapseTime"""
-    random.seed(3)
-    pf = submission.ParticleFilter(30, 13)
-    self.assertAlmostEqual(69,  len([k for k,v in list(pf.particles.items()) if v > 0]), places=4) # This should not fail unless your code changed the random initialization code.
+    @graded()
+    def test_2(self):
+        """3a-2-basic:  3a basic test for PF observe AND elapseTime"""
+        random.seed(3)
+        pf = submission.ParticleFilter(30, 13)
+        self.assertAlmostEqual(69,  len([k for k,v in list(pf.particles.items()) if v > 0]), places=4) # This should not fail unless your code changed the random initialization code.
 
-    pf.elapseTime()
-    self.assertAlmostEqual(58, len([k for k,v in list(pf.particles.items()) if v > 0]), places=4) # Most particles lie on the same (row, col) locations
-    pf.observe(555, 193, 800)
+        pf.elapseTime()
+        self.assertAlmostEqual(58, len([k for k,v in list(pf.particles.items()) if v > 0]), places=4) # Most particles lie on the same (row, col) locations
+        pf.observe(555, 193, 800)
 
-    self.assertAlmostEqual(200, sum(pf.particles.values()), places=4) # Do not lose particles
-    self.assertAlmostEqual(2, len([k for k,v in list(pf.particles.items()) if v > 0]), places=4) # Most particles lie on the same (row, col) locations
-    self.assertAlmostEqual(0.025, pf.belief.getProb(20, 4), places=4)
-    self.assertAlmostEqual(0.0, pf.belief.getProb(21, 5), places=4)
-    self.assertAlmostEqual(0.0, pf.belief.getProb(21, 6), places=4)
-    self.assertAlmostEqual(0.975, pf.belief.getProb(22, 6), places=4)
-    self.assertAlmostEqual(0.0, pf.belief.getProb(22, 7), places=4)
+        self.assertAlmostEqual(200, sum(pf.particles.values()), places=4) # Do not lose particles
+        self.assertAlmostEqual(2, len([k for k,v in list(pf.particles.items()) if v > 0]), places=4) # Most particles lie on the same (row, col) locations
+        self.assertAlmostEqual(0.025, pf.belief.getProb(20, 4), places=4)
+        self.assertAlmostEqual(0.0, pf.belief.getProb(21, 5), places=4)
+        self.assertAlmostEqual(0.0, pf.belief.getProb(21, 6), places=4)
+        self.assertAlmostEqual(0.975, pf.belief.getProb(22, 6), places=4)
+        self.assertAlmostEqual(0.0, pf.belief.getProb(22, 7), places=4)
 
-    pf.elapseTime()
-    self.assertAlmostEqual(4, len([k for k,v in list(pf.particles.items()) if v > 0]), places=4) # Most particles lie on the same (row, col) locations
+        pf.elapseTime()
+        self.assertAlmostEqual(4, len([k for k,v in list(pf.particles.items()) if v > 0]), places=4) # Most particles lie on the same (row, col) locations
 
-    pf.observe(660, 193, 50)
-    self.assertAlmostEqual(0.0, pf.belief.getProb(20, 4), places=4)
-    self.assertAlmostEqual(0.0, pf.belief.getProb(21, 5), places=4)
-    self.assertAlmostEqual(0.0, pf.belief.getProb(21, 6), places=4)
-    self.assertAlmostEqual(0.0, pf.belief.getProb(22, 6), places=4)
-    self.assertAlmostEqual(1.0, pf.belief.getProb(22, 7), places=4)
+        pf.observe(660, 193, 50)
+        self.assertAlmostEqual(0.0, pf.belief.getProb(20, 4), places=4)
+        self.assertAlmostEqual(0.0, pf.belief.getProb(21, 5), places=4)
+        self.assertAlmostEqual(0.0, pf.belief.getProb(21, 6), places=4)
+        self.assertAlmostEqual(0.0, pf.belief.getProb(22, 6), places=4)
+        self.assertAlmostEqual(1.0, pf.belief.getProb(22, 7), places=4)
 
-  @graded(is_hidden=True)
-  def test_3i(self):
-    """3a-3i-hidden:  3a advanced test for PF observe"""
-    random.seed(34)
-    A = 30
-    B = 30
-    pf = submission.ParticleFilter(A, B)
+    @graded(is_hidden=True)
+    def test_3i(self):
+        """3a-3i-hidden:  3a advanced test for PF observe"""
+        random.seed(34)
+        A = 30
+        B = 30
+        pf = submission.ParticleFilter(A, B)
 
-    N = 50
-    p_values = []
-    for i in range(N):
-      SEED_MODE = 1000 # setup the random seed for fairness
-      seed = int(random.random() * SEED_MODE)
-      nextSeed = int(random.random() * SEED_MODE)
+        N = 50
+        p_values = []
+        for i in range(N):
+            SEED_MODE = 1000 # setup the random seed for fairness
+            seed = int(random.random() * SEED_MODE)
+            nextSeed = int(random.random() * SEED_MODE)
 
-      a = int(random.random() * 30)
-      b = int(random.random() * 5)
-      c = int(random.random() * 30)
+            a = int(random.random() * 30)
+            b = int(random.random() * 5)
+            c = int(random.random() * 30)
 
-      random.seed(seed)
-      pf.observe(a, b, c)
-      random.seed(seed)
-      for d in range(A):
-        for e in range(B):
-          p_values.append(pf.belief.getProb(d, e))
-      random.seed(nextSeed)
+            random.seed(seed)
+            pf.observe(a, b, c)
+            random.seed(seed)
+            for d in range(A):
+                for e in range(B):
+                    p_values.append(pf.belief.getProb(d, e))
+            random.seed(nextSeed)
 
-    # BEGIN_HIDE
-    # END_HIDE
+        # BEGIN_HIDE
+        # END_HIDE
 
-  @graded(is_hidden=True)
-  def test_3ii(self):
-    """3a-3ii-hidden:  3a test for pdf ordering"""
-    random.seed(34)
+    @graded(is_hidden=True)
+    def test_3ii(self):
+        """3a-3ii-hidden:  3a test for pdf ordering"""
+        random.seed(34)
 
-    oldpdf = util.pdf
-    del util.pdf
-    def pdf(a, b, c): # You can't swap a and c now!
-      return a + b
-    util.pdf = pdf
+        oldpdf = util.pdf
+        del util.pdf
+        def pdf(a, b, c): # You can't swap a and c now!
+            return a + b
+        util.pdf = pdf
 
-    A = 30
-    B = 30
-    random.seed(34)
-    pf = submission.ParticleFilter(A, B)
+        A = 30
+        B = 30
+        random.seed(34)
+        pf = submission.ParticleFilter(A, B)
 
-    N = 50
-    p_values = []
-    for i in range(N):
-      SEED_MODE = 1000 # setup the random seed for fairness
-      seed = int(random.random() * SEED_MODE)
-      nextSeed = int(random.random() * SEED_MODE)
+        N = 50
+        p_values = []
+        for i in range(N):
+            SEED_MODE = 1000 # setup the random seed for fairness
+            seed = int(random.random() * SEED_MODE)
+            nextSeed = int(random.random() * SEED_MODE)
 
-      a = int(random.random() * 30)
-      b = int(random.random() * 5)
-      c = int(random.random() * 30)
+            a = int(random.random() * 30)
+            b = int(random.random() * 5)
+            c = int(random.random() * 30)
 
-      random.seed(seed)
-      pf.observe(a, b, c)
-      for d in range(A):
-        for e in range(B):
-          p_values.append(pf.belief.getProb(d, e))
-      random.seed(nextSeed)
+            random.seed(seed)
+            pf.observe(a, b, c)
+            for d in range(A):
+                for e in range(B):
+                    p_values.append(pf.belief.getProb(d, e))
+            random.seed(nextSeed)
 
-    # BEGIN_HIDE
-    # END_HIDE
+        # BEGIN_HIDE
+        # END_HIDE
 
-    util.pdf = oldpdf # fix the pdf
+        util.pdf = oldpdf # fix the pdf
 
-  @graded(is_hidden=True)
-  def test_4(self):
-    """3a-4-hidden:  advanced test for PF elapseTime"""
-    A = 30
-    B = 30
-    random.seed(35)
-    pf = submission.ParticleFilter(A, B)
+    @graded(is_hidden=True)
+    def test_4(self):
+        """3a-4-hidden:  advanced test for PF elapseTime"""
+        A = 30
+        B = 30
+        random.seed(35)
+        pf = submission.ParticleFilter(A, B)
 
-    N1 = 20
-    N2 = 400
-    p_values = []
-    for i in range(N1):
-      SEED_MODE = 1000 # setup the random seed for fairness
-      seed = int(random.random() * SEED_MODE)
-      nextSeed = int(random.random() * SEED_MODE)
+        N1 = 20
+        N2 = 400
+        p_values = []
+        for i in range(N1):
+            SEED_MODE = 1000 # setup the random seed for fairness
+            seed = int(random.random() * SEED_MODE)
+            nextSeed = int(random.random() * SEED_MODE)
 
-      random.seed(seed)
-      pf.elapseTime()
+            random.seed(seed)
+            pf.elapseTime()
 
-      for i in range(N2):
-        d = int(random.random() * A)
-        e = int(random.random() * B)
-        p_values.append(pf.belief.getProb(d, e))
-      random.seed(nextSeed)
+            for i in range(N2):
+                d = int(random.random() * A)
+                e = int(random.random() * B)
+                p_values.append(pf.belief.getProb(d, e))
+            random.seed(nextSeed)
 
-    # BEGIN_HIDE
-    # END_HIDE
+        # BEGIN_HIDE
+        # END_HIDE
 
-  @graded(is_hidden=True)
-  def test_5(self):
-    """3a-5-hidden:  advanced test for PF observe AND elapseTime"""
-    A = 30
-    B = 30
-    random.seed(36)
-    pf = submission.ParticleFilter(A, B)
+    @graded(is_hidden=True)
+    def test_5(self):
+        """3a-5-hidden:  advanced test for PF observe AND elapseTime"""
+        A = 30
+        B = 30
+        random.seed(36)
+        pf = submission.ParticleFilter(A, B)
 
-    N1 = 20
-    N2 = 400
-    p_values = []
-    for i in range(N1):
-      SEED_MODE = 1000 # setup the random seed for fairness
-      seed = int(random.random() * SEED_MODE)
-      seed2 = int(random.random() * SEED_MODE)
-      nextSeed = int(random.random() * SEED_MODE)
+        N1 = 20
+        N2 = 400
+        p_values = []
+        for i in range(N1):
+            SEED_MODE = 1000 # setup the random seed for fairness
+            seed = int(random.random() * SEED_MODE)
+            seed2 = int(random.random() * SEED_MODE)
+            nextSeed = int(random.random() * SEED_MODE)
 
-      random.seed(seed)
-      pf.elapseTime()
+            random.seed(seed)
+            pf.elapseTime()
 
-      a = int(random.random() * 5 * A)
-      b = int(random.random() * 5)
-      c = int(random.random() * 5 * A)
+            a = int(random.random() * 5 * A)
+            b = int(random.random() * 5)
+            c = int(random.random() * 5 * A)
 
-      random.seed(seed2)
-      pf.observe(a, b, c)
-      for i in range(N2):
-        d = int(random.random() * A)
-        e = int(random.random() * B)
-        p_values.append(pf.belief.getProb(d, e))
-      random.seed(nextSeed)
+            random.seed(seed2)
+            pf.observe(a, b, c)
+            for i in range(N2):
+                d = int(random.random() * A)
+                e = int(random.random() * B)
+                p_values.append(pf.belief.getProb(d, e))
+            random.seed(nextSeed)
 
-    # BEGIN_HIDE
-    # END_HIDE
+        # BEGIN_HIDE
+        # END_HIDE
 
-  @graded()
-  def test_6(self):
-    """5b-1-basic:  5b basic test for sensor deception"""
 
-    ei = submission.ExactInferenceWithSensorDeception(10, 10, 0.5)
-    ei.skipElapse = True ### ONLY FOR PROBLEM 1
-    ei.observe(110, 385, 400)
-    
-    self.assertAlmostEqual(0.0005653754944143804, ei.belief.getProb(0, 0), places=4)
-    self.assertAlmostEqual(0.04986537275117204, ei.belief.getProb(2, 4), places=4)
-    self.assertAlmostEqual(0.004000027030192286, ei.belief.getProb(4, 7), places=4)
-    self.assertAlmostEqual(0.007581706573375535, ei.belief.getProb(5, 9), places=4)
+class Test_5b(GradedTestCase):
+    @graded()
+    def test_0(self):
+        """5b-0-basic:  5b basic test for sensor deception"""
 
-    ei.observe(130, 400, 350)
-    self.assertAlmostEqual(5.292221225453018e-11, ei.belief.getProb(0, 0), places=4)
-    self.assertAlmostEqual(0.032898084958859534, ei.belief.getProb(2, 4), places=4)
-    self.assertAlmostEqual(0.028946975625511615, ei.belief.getProb(4, 7), places=4)
-    self.assertAlmostEqual(0.05486649808182239, ei.belief.getProb(5, 9), places=4)
+        ei = submission.ExactInferenceWithSensorDeception(10, 10, 0.5)
+        ei.skipElapse = True ### ONLY FOR PROBLEM 1
+        ei.observe(110, 385, 400)
+
+        self.assertAlmostEqual(0.0005653754944143804, ei.belief.getProb(0, 0), places=4)
+        self.assertAlmostEqual(0.04986537275117204, ei.belief.getProb(2, 4), places=4)
+        self.assertAlmostEqual(0.004000027030192286, ei.belief.getProb(4, 7), places=4)
+        self.assertAlmostEqual(0.007581706573375535, ei.belief.getProb(5, 9), places=4)
+
+        ei.observe(130, 400, 350)
+        self.assertAlmostEqual(5.292221225453018e-11, ei.belief.getProb(0, 0), places=4)
+        self.assertAlmostEqual(0.032898084958859534, ei.belief.getProb(2, 4), places=4)
+        self.assertAlmostEqual(0.028946975625511615, ei.belief.getProb(4, 7), places=4)
+        self.assertAlmostEqual(0.05486649808182239, ei.belief.getProb(5, 9), places=4)
+
 
 def getTestCaseForTestID(test_id):
   question, part, _ = test_id.split('-')

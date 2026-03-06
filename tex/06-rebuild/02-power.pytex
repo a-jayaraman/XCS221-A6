@@ -1,0 +1,13 @@
+\item \points{6b} \textbf{Power and Responsibility in Building AI}
+
+\begin{itemize}
+    \item Who currently has the power to make meaningful changes to products like this: engineers, designers, executives, policymakers, users, or someone else? Who do you think \emph{should} hold the power and responsibility for building better AI-powered tools, and why?
+    \item Reflect on any tensions between who currently drives change and who ought to be responsible from a societal perspective. Propose one recommendation for shifting power or responsibility if there's a misalignment.
+\end{itemize}
+
+\expect{In 4-6 sentences, discuss who builds and steers AI products like the one you selected, and who should be responsible for their positive and negative impacts, supporting your recommendations with evidence or reasoning.}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_6b(.*?)% <SCPD_SUBMISSION_TAG>_6b', f.read(), re.DOTALL)).group(1))
+🐍

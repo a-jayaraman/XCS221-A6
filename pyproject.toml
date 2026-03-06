@@ -1,0 +1,13 @@
+[project]
+name = "xcs221"
+version = "0.1.0"
+description = "Artificial Intelligence: Principles and Techniques Environment"
+requires-python = ">=3.12"
+dependencies = [
+  "pip==26.0",
+  "cmake==4.2.3",
+  "notebook==7.5.3",
+  "tk",
+  "matplotlib==3.10.8",
+  "pandas==3.0.0",
+]

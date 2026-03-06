@@ -1,0 +1,28 @@
+\item \points{2d} \textbf{Forward Sampling Table}
+
+Implement \texttt{test\_forward\_sampling}, which will initialize the network with \texttt{mutation\_rate = 0.1} and \texttt{genome\_length = 10}, and then run the \texttt{forward\_sampling} function once on this network.
+Fill out the table below with the complete genomes you observed for each species.
+
+\begin{center}
+\lstDeleteShortInline|
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Species} & \textbf{Genome} \\
+\hline
+Thomas bayus & \rule{7cm}{0pt} \\
+Humblus studentus & \rule{7cm}{0pt} \\
+Aryamus bayus & \rule{7cm}{0pt} \\
+Kenius bayus & \rule{7cm}{0pt} \\
+\hline
+\end{tabular}
+\lstMakeShortInline|
+\end{center}
+
+\expect{
+    A completed table showing the sampled values for each variable in the phylogenetic tree.
+}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_2d(.*?)% <SCPD_SUBMISSION_TAG>_2d', f.read(), re.DOTALL)).group(1))
+🐍

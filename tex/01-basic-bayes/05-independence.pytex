@@ -1,0 +1,14 @@
+\item \points{1e} \textbf{Independence Analysis}
+
+\begin{enumerate}[label=(\alph*), leftmargin=2em]
+    \item $\text{Rain}$ and $\text{Sprinkler}$ are independent.
+    \item $\text{Rain}$ and $\text{Sprinkler}$ are conditionally independent given $\text{WetGrass}$.
+    \item $\mathbb{P}(\text{Rain} \mid \text{WetGrass}) > \mathbb{P}(\text{Rain} \mid \text{WetGrass}, \text{Sprinkler})$.
+\end{enumerate}
+
+\expect{T/F for each subpart. No justification needed.}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_1e(.*?)% <SCPD_SUBMISSION_TAG>_1e', f.read(), re.DOTALL)).group(1))
+🐍

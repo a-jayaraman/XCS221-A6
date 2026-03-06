@@ -1,0 +1,13 @@
+\item \points{6a} \textbf{Summarize and Improve Your Product}
+
+\begin{itemize}
+    \item Based on the research you've done in this homework, summarize your chosen product's key features, strengths, and weaknesses in 1 paragraph.
+    \item Write a 1-2 paragraph summary of actionable improvements you would make to the product to address the weaknesses you identified.
+\end{itemize}
+
+\expect{In 2-3 paragraphs, provide a thoughtful summary of your research on your chosen product and actionable improvements you would make to the product to address the weaknesses you identified.}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_6a(.*?)% <SCPD_SUBMISSION_TAG>_6a', f.read(), re.DOTALL)).group(1))
+🐍

@@ -1,0 +1,13 @@
+\item \points{5b} \textbf{Job Displacement vs. Augmentation}
+
+\begin{itemize}
+    \item Discuss whether this product is more likely to directly replace existing jobs or to augment (assist/support) workers in those jobs. Explain your reasoning based on product features and cited resources, if possible.
+    \item Analyze the potential consequences and risks if the product replaces or augments jobs incorrectly or incompetently. What could go wrong for both workers and employers?
+\end{itemize}
+
+\expect{In 4-6 sentences, provide a thoughtful analysis of job displacement versus augmentation, including at least one risk or downside for workers. Support your conclusions with observations about the product or external evidence.}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_5b(.*?)% <SCPD_SUBMISSION_TAG>_5b', f.read(), re.DOTALL)).group(1))
+🐍

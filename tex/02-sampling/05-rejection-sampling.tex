@@ -1,0 +1,9 @@
+\item \points{2e}
+
+Now we will use \textbf{rejection sampling} to estimate the following posterior probability: $\mathbb{P}(\text{ThomasBayus} = \text{AAAC} \mid \text{KeniusBayus} = \text{AAAA})$.
+
+Implement the function \texttt{rejection\_sampling}, which takes in a setting for \textit{Kenius bayus}'s gene (as a list of nucleotide strings, e.g. \texttt{['A', 'A', 'A', 'A']}) along with the number of samples as an argument.
+
+\expect{
+    An implementation of the \texttt{rejection\_sampling} function in \texttt{submission.py}. Your implementation should directly call the \texttt{forward\_sampling} function you implemented in part (b). As before, your solution should explicitly handle the sequence length dimension by using the \texttt{network.batch\_size} parameter.
+}

@@ -1,0 +1,9 @@
+\item \points{1a} \textbf{Bayesian Network Diagram}
+List the edges in the Bayesian network that is a causal model for why the grass on the Oval is wet. Use the variables $\text{Rain}$, $\text{Sprinkler}$, and $\text{WetGrass}$.
+
+\expect{A list of edges in the Bayesian network, in the format of $\text{variable1} \rightarrow \text{variable2}$.}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_1a(.*?)% <SCPD_SUBMISSION_TAG>_1a', f.read(), re.DOTALL)).group(1))
+🐍

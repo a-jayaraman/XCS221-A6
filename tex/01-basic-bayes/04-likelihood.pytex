@@ -1,0 +1,27 @@
+\item \points{1d} \textbf{Likelihood Calculation}
+
+Assume $p(\text{Rain}) = 0.2$, $p(\text{Sprinkler}) = 0.5$, and the following local conditional probability table for $p(\text{WetGrass} \mid \text{Rain}, \text{Sprinkler})$:
+
+\begin{center}
+\lstDeleteShortInline|
+\begin{tabular}{|c|c|c|}
+\hline
+$\text{Rain}$ & $\text{Sprinkler}$ & $p(\text{WetGrass} \mid \text{Rain}, \text{Sprinkler})$ \\
+\hline
+True & True & 0.9 \\
+True & False & 0.8 \\
+False & True & 0.7 \\
+False & False & 0.0 \\
+\hline
+\end{tabular}
+\lstMakeShortInline|
+\end{center}
+
+What is the probability that it rained, the sprinklers are on, but the grass is not wet?
+
+\expect{A numerical answer with brief calculations shown.}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_1d(.*?)% <SCPD_SUBMISSION_TAG>_1d', f.read(), re.DOTALL)).group(1))
+🐍

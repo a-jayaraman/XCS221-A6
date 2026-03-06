@@ -1,0 +1,13 @@
+\item \points{5d} \textbf{Strategies and Mitigation Measures}
+
+\begin{itemize}
+    \item Propose at least one concrete strategy for deploying or regulating this technology to lessen negative effects (such as job loss or deepening inequality). Possibilities include ``human-in-the-loop'' mechanisms, reskilling or retraining programs, oversight requirements, or policy interventions.
+    \item Discuss how much power or oversight humans should have over the system's predictions and decisions in these mitigation approaches.
+\end{itemize}
+
+\expect{In 4-6 sentences, describe a pragmatic mitigation strategy and briefly explain how it would help reduce negative economic or social outcomes. Address the role of human oversight or intervention as part of the solution.}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_5d(.*?)% <SCPD_SUBMISSION_TAG>_5d', f.read(), re.DOTALL)).group(1))
+🐍

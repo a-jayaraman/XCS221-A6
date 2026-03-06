@@ -1,0 +1,42 @@
+\item {\bf Sampling}
+
+\begin{center}
+  \includegraphics[width=0.5\textwidth]{images/dna.png}
+\end{center}
+
+You got distracted while examining that luscious green grass in the Stanford Oval, and you somehow wandered into the Gilbert Biological Sciences Building. As you realize where you are, you overhear some biologists discussing the genome of a new species they've discovered, provisionally given the scientific name \textit{Kenius bayus}.
+
+(As you remember from high school biology, the genome of a living thing is encoded in DNA, which is a long chain of nucleotides. Each nucleotide can be one of four organic molecules: \textit{A}, \textit{C}, \textit{T}, or \textit{G}.)
+
+Assume a simplified model of biology where each descendant mutates the gene of its ancestor with a probability of \texttt{mutation\_rate}, with a uniform distribution over the other three nucleotides when mutating. The mutation process is independent for each nucleotide.
+
+For example, if we set \texttt{mutation\_rate = 0.1}, then the local conditional probability table for $p(\text{HumblusStudentus} \mid \text{ThomasBayus})$ would be:
+
+\begin{center}
+\lstDeleteShortInline|
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$\text{ThomasBayus}$ & $p(\text{HS} = \text{A} \mid \text{TB})$ & $p(\text{HS} = \text{C} \mid \text{TB})$ & $p(\text{HS} = \text{T} \mid \text{TB})$ & $p(\text{HS} = \text{G} \mid \text{TB})$ \\
+\hline
+$\text{A}$ & $0.9$ & $0.03333$ & $0.03333$ & $0.03333$ \\
+$\text{C}$ & $0.03333$ & $0.9$ & $0.03333$ & $0.03333$ \\
+$\text{T}$ & $0.03333$ & $0.03333$ & $0.9$ & $0.03333$ \\
+$\text{G}$ & $0.03333$ & $0.03333$ & $0.03333$ & $0.9$ \\
+\hline
+\end{tabular}
+\lstMakeShortInline|
+\end{center}
+
+The biologists are trying to figure out the probability of \textit{Kenius bayus}'s genome resulting from a series of mutations from its ancestor, \textit{Thomas bayus}. You realise you could help these poor biologists, who never took CS 221, by modelling the mutation process with Bayesian networks!
+
+\begin{enumerate}
+
+  \input{02-sampling/01-phylogenetic-tree}
+  \input{02-sampling/02-forward-sampling}
+  \input{02-sampling/03-joint-probs}
+  \input{02-sampling/04-genome}
+  \input{02-sampling/05-rejection-sampling}
+  \input{02-sampling/06-gibbs-sampling}
+  \input{02-sampling/07-sampling-comparison}
+
+\end{enumerate}

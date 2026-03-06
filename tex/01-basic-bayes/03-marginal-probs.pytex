@@ -1,0 +1,10 @@
+\item \points{1c} \textbf{Marginal Probability}
+
+Express $\mathbb{P}(\text{WetGrass})$ in terms of local conditional probabilities.
+
+\expect{The simplified marginal probability expression, in terms of the local conditional probabilities (not a numerical value).}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_1c(.*?)% <SCPD_SUBMISSION_TAG>_1c', f.read(), re.DOTALL)).group(1))
+🐍

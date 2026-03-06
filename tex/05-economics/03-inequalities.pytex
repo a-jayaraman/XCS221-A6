@@ -1,0 +1,13 @@
+\item \points{5c} \textbf{Societal Inequalities}
+
+\begin{itemize}
+    \item Analyze how the adoption of this tool might either exacerbate or mitigate existing societal inequalities (e.g., digital divide, socioeconomic, class, racial, or geographic divides).
+    \item Consider which demographics of users benefit most versus least from this technology. Would increased access to the product help close such divides, or does it risk deepening them?
+    \item Building on the concept of \textbf{inequality} in AI systems: beyond access, consider how the product's performance might vary across different user groups. How might differences in performance (not just access) contribute to inequality? What metrics should be monitored to ensure equitable outcomes?
+  \end{itemize}
+
+  \expect{Identify at least one way the product could impact societal inequalities, and discuss specific groups of users who would be most and least likely to benefit. Additionally, in 2-3 sentences, analyze how performance disparities (not just access barriers) might contribute to inequality, and suggest metrics for monitoring equitable outcomes.}
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_5c(.*?)% <SCPD_SUBMISSION_TAG>_5c', f.read(), re.DOTALL)).group(1))
+🐍

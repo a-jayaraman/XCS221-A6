@@ -1,0 +1,7 @@
+\item \points{3f}
+
+We have provided a training dataset \texttt{annotations.csv} with data from 3 annotators on 100 data points. Note that this dataset contains ground-truth labels for each data point. Read in the dataset, initialise the correct \texttt{BayesianNetwork} structure for modelling this problem, and use \texttt{mle\_estimate} to learn its parameters.
+
+\expect{
+    Implement \texttt{mle\_estimate\_for\_annotators}, which takes in a list of observations and returns a new \texttt{BayesianNetwork} object with the parameters estimated by MLE.
+}

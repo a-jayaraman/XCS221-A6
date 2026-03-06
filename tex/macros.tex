@@ -80,6 +80,8 @@
 % decoder cell
 \newcommand{\cdec}{\bc^{\text{dec}}}
 
+\newcommand{\expect}[1]{\noindent{\textbf{What we expect:} #1}}
+
 \usepackage[hyperfootnotes=false]{hyperref}
 \hypersetup{
   colorlinks=true,
@@ -215,3 +217,25 @@
 
 \newcommand{\ac}[1]{ {\color{red} \textbf{AC:} #1} }
 \newcommand{\ner}[1]{\textbf{\color{blue} #1}}
+
+% LLM Prompt box
+\definecolor{llmpromptbg}{RGB}{235, 242, 255}
+\newenvironment{llmprompt}{%
+  \def\FrameCommand{\colorbox{llmpromptbg}}%
+  \setlength\fboxsep{10pt}%
+  \MakeFramed{\advance\hsize-\width \FrameRestore}%
+  \noindent{\small\bfseries\color{RoyalBlue}Prompt Template}\par\smallskip%
+  \small
+}{%
+  \endMakeFramed
+}
+
+% Red outline box (no header)
+\definecolor{redoutline}{RGB}{200, 0, 0}
+\newenvironment{redbox}{%
+  \def\FrameCommand{\fcolorbox{redoutline}{white}}%
+  \setlength\fboxsep{10pt}%
+  \MakeFramed{\advance\hsize-\width \FrameRestore}%
+}{%
+  \endMakeFramed
+}

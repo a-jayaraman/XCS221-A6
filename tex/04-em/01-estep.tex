@@ -1,0 +1,9 @@
+\item \points{4a}
+
+Implement \texttt{e\_step(BayesianNetwork, data)} which creates a dataset of fully-observed observations along with their normalized weights $q(h)$. (You should be able to use functions you implemented earlier as subroutines.)
+
+\expect{
+    An implementation of the \texttt{e\_step} function in \texttt{submission.py}. We expect you to use the helper functions we've provided as well as your own implementations of \texttt{compute\_joint\_probability} and \texttt{accumulate\_assignment}.
+
+    Tip: you should normalize the weights for each sample in the dataset independently, e.g. the weights for all possible labels for \texttt{sample0} should sum to $1$.
+}

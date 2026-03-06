@@ -1,0 +1,12 @@
+\item \points{4d} \textbf{EM Plots}
+
+Use the provided function \texttt{test\_em\_learn} to train the model for 100 iterations. Plot the conditional probability tables for each of the annotators and the labels using the functions \texttt{plot\_annotator\_cpts} and \texttt{plot\_label\_cpt}. Show both resulting plots.
+
+\expect{
+    Two plots of the conditional probability tables for each of the annotators and the labels.
+}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_4d(.*?)% <SCPD_SUBMISSION_TAG>_4d', f.read(), re.DOTALL)).group(1))
+🐍

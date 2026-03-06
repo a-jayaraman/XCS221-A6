@@ -1,252 +1,301 @@
-'''
-Licensing Information: Please do not distribute or publish solutions to this
-project. You are free to use and extend Driverless Car for educational
-purposes. The Driverless Car project was developed at Stanford, primarily by
-Chris Piech (piech@cs.stanford.edu). It was inspired by the Pacman projects.
-'''
-from engine.const import Const
-import util, math, random, collections
+#!/usr/bin/python
+"""
+XCS221 Homework 6: Bayesian Networks
+"""
 
-# Class: ExactInference
-# ---------------------
-# Maintain and update a belief distribution over the probability of a car
-# being in a tile using exact updates (correct, but slow times).
-class ExactInference(object):
+from util import (
+    BayesianNetwork, BayesianNode, init_zero_conditional_probability_tables,
+    normalize_counts, load_annotation_csv, plot_annotator_cpts, plot_label_cpt
+)
+from typing import Dict, List, Any, Optional, Tuple
+from itertools import product
+import numpy as np
+import random
+from tqdm import tqdm
+from collections import defaultdict
 
-    # Function: Init
-    # --------------
-    # Constructor that initializes an ExactInference object which has
-    # numRows x numCols number of tiles.
-    def __init__(self, numRows, numCols):
-        self.skipElapse = False ### ONLY USED BY GRADER.PY in case problem 3 has not been completed
-        # util.Belief is a class (constructor) that represents the belief for a single
-        # inference state of a single car (see util.py).
-        self.belief = util.Belief(numRows, numCols)
-        self.transProb = util.loadTransProb()
+############################################################
+# Problem 2a: Converting Phylogenetic Tree to Bayesian Network
 
+def initialize_phylogenetic_tree(mutation_rate: float, genome_length: int=1) -> BayesianNetwork:
+    """
+    Initialize the phylogenetic tree as a Bayesian network using the BayesianNode and
+    Bayesian Network classes in util.py.
+    """
+    if not (0.0 <= mutation_rate <= 1.0):
+        raise ValueError("mutation_rate must be in [0, 1].")
+    pass
+    # ### START CODE HERE ###
+    # ### END CODE HERE ###
+    network = BayesianNetwork([aryamus_bayus, humblus_studentus, thomas_bayus, kenius_bayus], batch_size=genome_length)
+    return network
 
-    ##################################################################################
-    # Problem 1:
-    # Function: Observe (update the probabilities based on an observation)
-    # -----------------
-    # Takes |self.belief| -- an object of class Belief, defined in util.py --
-    # and updates it in place based on the distance observation $d_t$ and
-    # your position $a_t$.
-    #
-    # - agentX: x location of your car (not the one you are tracking)
-    # - agentY: y location of your car (not the one you are tracking)
-    # - observedDist: true distance plus a mean-zero Gaussian with standard
-    #                 deviation Const.SONAR_STD
-    #
-    # Notes:
-    # - Convert row and col indices into locations using util.rowToY and util.colToX.
-    # - util.pdf: computes the probability density function for a Gaussian
-    # - Don't forget to normalize self.belief after you update its probabilities!
-    ##################################################################################
+############################################################
+# Problem 2b: Sampling from Bayesian Networks
 
-    def observe(self, agentX, agentY, observedDist):
+def forward_sampling(network: BayesianNetwork) -> Dict[str, str]:
+    """
+    Sample a single observation from the given Bayesian network.
+
+    Use the topological ordering of variables in network.order and sample each
+    variable according to its conditional probability distribution given the values
+    of its parents (which have already been sampled).
+
+    Args:
+        network: A BayesianNetwork object containing nodes to sample from
+
+    Returns:
+        A dictionary mapping variable names to their sampled values
+    """
+    samples: Dict[str, List[str]] = {node.name: [] for node in network.order}
+
+    for idx in range(network.batch_size):
+        assignment: Dict[str, str] = {}
         pass
         # ### START CODE HERE ###
         # ### END CODE HERE ###
 
-    ##################################################################################
-    # Problem 2:
-    # Function: Elapse Time (propose a new belief distribution based on a learned transition model)
-    # ---------------------
-    # Takes |self.belief| and updates it based on the passing of one time step.
-    # Notes:
-    # - Use the transition probabilities in self.transProb, which is a dictionary
-    #   containing all the ((oldTile, newTile), transProb) key-val pairs that you
-    #   must consider.
-    # - If there are ((oldTile, newTile), transProb) pairs not in self.transProb,
-    #   they are assumed to have zero probability, and you can safely ignore them.
-    # - Use the addProb and getProb methods of the Belief class to access and modify
-    #   the probabilities associated with a belief.  (See util.py.)
-    # - Be careful that you are using only the CURRENT self.belief distribution to compute
-    #   updated beliefs.  Don't incrementally update self.belief and use the updated value
-    #   for one grid square to compute the update for another square.
-    # - Don't forget to normalize self.belief after all probabilities have been updated!
-    ##################################################################################
-    def elapseTime(self):
-        if self.skipElapse: return ### ONLY FOR THE GRADER TO USE IN Problem 2
-        # ### START CODE HERE ###
-        # ### END CODE HERE ###
+    return samples
 
-    # Function: Get Belief
-    # ---------------------
-    # Returns your belief of the probability that the car is in each tile. Your
-    # belief probabilities should sum to 1.
-    def getBelief(self):
-        return self.belief
+############################################################
+# Problem 2c: Computing Joint Probability
 
+def compute_joint_probability(
+    network: BayesianNetwork,
+    assignment: Dict[str, List[str]],
+    batch_indices: Optional[List[int]] = None
+) -> float:
+    """
+    Compute the joint probability of a given assignment to all variables in the network.
 
-# Class: Particle Filter
-# ----------------------
-# Maintain and update a belief distribution over the probability of a car
-# being in a tile using a set of particles.
-class ParticleFilter(object):
+    Args:
+        network: A BayesianNetwork object
+        assignment: Dictionary mapping variable names to their assigned values
+        batch_indices: Optional list of batch indices to compute the joint probability for
+            (default is [0, 1, ..., batch_size-1], so all the indices)
 
-    NUM_PARTICLES = 200
+    Returns:
+        The joint probability as a float
+    """
+    pass
+    # ### START CODE HERE ###
+    # ### END CODE HERE ###
 
-    # Function: Init
-    # --------------
-    # Constructor that initializes an ParticleFilter object which has
-    # (numRows x numCols) number of tiles.
-    def __init__(self, numRows, numCols):
-        self.belief = util.Belief(numRows, numCols)
+# ############################################################
+# # Problem 2d: Test forward sampling
 
-        # Load the transition probabilities and store them in an integer-valued defaultdict.
-        # Use self.transProbDict[oldTile][newTile] to get the probability of transitioning from oldTile to newTile.
-        self.transProb = util.loadTransProb()
-        self.transProbDict = dict()
-        for (oldTile, newTile) in self.transProb:
-            if not oldTile in self.transProbDict:
-                self.transProbDict[oldTile] = collections.defaultdict(int)
-            self.transProbDict[oldTile][newTile] = self.transProb[(oldTile, newTile)]
+def test_forward_sampling():
+    np.random.seed(123)
+    random.seed(123)
+    pass
+    # ### START CODE HERE ###
+    # ### END CODE HERE ###
+    print(sample)
+    print(f"{joint_probability:.10%}")
 
-        # Initialize the particles randomly.
-        self.particles = collections.defaultdict(int)
-        potentialParticles = list(self.transProbDict.keys())
-        for i in range(self.NUM_PARTICLES):
-            particleIndex = int(random.random() * len(potentialParticles))
-            self.particles[potentialParticles[particleIndex]] += 1
+# Uncomment to test forward sampling
+# test_forward_sampling()
 
-        self.updateBelief()
+############################################################
+# Problem 2e: Rejection Sampling
 
-    # Function: Update Belief
-    # ---------------------
-    # Updates |self.belief| with the probability that the car is in each tile
-    # based on |self.particles|, which is a defaultdict from particle to
-    # probability (which should sum to 1).
-    def updateBelief(self):
-        newBelief = util.Belief(self.belief.getNumRows(), self.belief.getNumCols(), 0)
-        for tile in self.particles:
-            newBelief.setProb(tile[0], tile[1], self.particles[tile])
-        newBelief.normalize()
-        self.belief = newBelief
+def rejection_sampling(
+    network: BayesianNetwork,
+    target_variable: str,
+    conditioned_on_assignments: Dict[str, List[str]],
+    num_samples: int
+) -> Dict[Any, float]:
+    """
+    Use rejection sampling to estimate the likelihoods for each outcome in the 
+    target variable conditioned on the given assignments (a dictionary mapping
+    variable names to their assigned values), i.e. P(target_variable | conditioned_on_assignments).
 
-    ##################################################################################
-    # Problem 3 (part a):
-    # Function: Observe:
-    # -----------------
-    # Takes |self.particles| and updates them based on the distance observation
-    # $d_t$ and your position $a_t$.
-    #
-    # This algorithm takes two steps:
-    # 1. Re-weight the particles based on the observation.
-    #    Concept: We had an old distribution of particles, and now we want to
-    #             update this particle distribution with the emission probability
-    #             associated with the observed distance.
-    #             Think of the particle distribution as the unnormalized posterior
-    #             probability where many tiles would have 0 probability.
-    #             Tiles with 0 probabilities (i.e. those with no particles)
-    #             do not need to be updated.
-    #             This makes particle filtering runtime to be O(|particles|).
-    #             By comparison, the exact inference method (used in problem 2 + 3)
-    #             assigns non-zero (though often very small) probabilities to most tiles,
-    #             so the entire grid must be updated at each time step.
-    # 2. Re-sample the particles.
-    #    Concept: Now we have the reweighted (unnormalized) distribution, we can now
-    #             re-sample the particles, choosing a new grid location for each of
-    #             the |self.NUM_PARTICLES| new particles.
-    #
-    # - agentX: x location of your car (not the one you are tracking)
-    # - agentY: y location of your car (not the one you are tracking)
-    # - observedDist: true distance plus a mean-zero Gaussian with standard deviation Const.SONAR_STD
-    #
-    # Notes:
-    # - Remember that |self.particles| is a dictionary with keys in the form of
-    #   (row, col) grid locations and values representing the number of particles at
-    #   that grid square.
-    # - Create |self.NUM_PARTICLES| new particles during resampling.
-    # - To pass the grader, you must call util.weightedRandomChoice() once per new
-    #   particle.  See util.py for the definition of weightedRandomChoice().
-    ##################################################################################
-    def observe(self, agentX, agentY, observedDist):
-        # ### START CODE HERE ###
-        # ### END CODE HERE ###
+    Args:
+        network: A BayesianNetwork object
+        target_variable: The name of the variable to estimate the likelihoods for
+        conditioned_on_assignments: A dictionary mapping variable names to their assigned values
+        num_samples: The number of samples to draw
 
-        self.updateBelief()
+    Returns:
+        A dictionary mapping outcomes to their likelihoods, conditioned on the given assignments.
+    """
+    pass
+    # ### START CODE HERE ###
+    # ### END CODE HERE ###
 
-    ##################################################################################
-    # Problem 3 (part b):
-    # Function: Elapse Time (propose the particle distribution at time $t+1$)
-    # ---------------------
-    # Reads |self.particles|, representing particle locations at time $t$, and
-    # writes an updated |self.particles| with particle locations at time $t+1$.
-    #
-    # This algorithm takes one step:
-    # 1. Proposal based on the particle distribution at current time $t$.
-    #    Concept: We have a particle distribution at current time $t$, and we want
-    #             to propose the particle distribution at time $t+1$. We would like
-    #             to sample again to see where each particle would end up using
-    #             the transition model.
-    #
-    # Notes:
-    # - Transition probabilities are stored in |self.transProbDict|.
-    # - To pass the grader, you must loop over the particles using a statement
-    #   of the form 'for tile in self.particles: <your code>' and call
-    #   util.weightedRandomChoice() to sample a new particle location.
-    # - Remember that if there are multiple particles at a particular location,
-    #   you will need to call util.weightedRandomChoice() once for each of them!
-    # - You should NOT call self.updateBelief() at the end of this function.
-    ##################################################################################
-    def elapseTime(self):
+############################################################
+# Problem 2f: Gibbs Sampling
+
+def gibbs_sampling(
+    network: BayesianNetwork,
+    target_variable: str,
+    conditioned_on_assignments: Dict[str, List[str]],
+    num_iterations: int,
+    initial_state: Dict[str, List[str]] = None
+) -> Dict[Any, float]:
+    """
+    Estimate P(target_variable | conditioned_on_assignments) via Gibbs sampling.
+
+    - Initialization: random ancestral sample (forward_sampling)
+    - Use compute_joint_probability to score single-variable proposals
+      (simple and robust for small networks)
+    - Record the Thomas bayus genome after each full sweep
+    """
+    # random initialization, then set evidence variables
+    state = forward_sampling(network) if initial_state is None else initial_state
+    for evidence_var, evidence_val in conditioned_on_assignments.items():
+        state[evidence_var] = evidence_val
+
+    # resample all non-evidence vars each sweep
+    resample_nodes = [n for n in network.order if n.name not in conditioned_on_assignments]
+    counts = defaultdict(int)
+
+    for _ in range(num_iterations):
         pass
         # ### START CODE HERE ###
         # ### END CODE HERE ###
+    total_samples = sum(counts.values())
+    return {val: counts[val] / total_samples for val in counts.keys()}
 
-    # Function: Get Belief
-    # ---------------------
-    # Returns your belief of the probability that the car is in each tile. Your
-    # belief probabilities should sum to 1.
-    def getBelief(self):
-        return self.belief
+def test_gibbs_vs_rejection(
+    num_steps: int=10000,
+    seed: int=0,
+    mutation_rate: float=0.1,
+    genome_length: int=4,
+):
+    def exact_inference():
+        same = 1.0 - mutation_rate
+        diff = mutation_rate / 3.0
+        p_a = same * same + 3 * diff * diff
+        p_not_a = diff * same + same * diff + 2 * diff * diff
+        expected = (p_a ** 3) * p_not_a
+        return expected
+    np.random.seed(seed)
+    random.seed(seed)
+    network = initialize_phylogenetic_tree(mutation_rate=mutation_rate, genome_length=genome_length)
+    kenius_bayus_genome = ['A'] * genome_length
 
-# Class: ExactInferenceWithSensorDeception
-# ---------------------
-# Same as ExactInference except with sensor deception attack represented in the
-# observation function.
-class ExactInferenceWithSensorDeception(ExactInference):
+    vals = gibbs_sampling(
+        network, 'Thomas bayus', {'Kenius bayus': kenius_bayus_genome}, num_iterations=num_steps)
+    gibbs_p_aaac = vals.get(('A', 'A', 'A', 'C'), 0.0)
 
-    # Function: Init
-    # --------------
-    # Constructor that initializes an ExactInference object which has
-    # numRows x numCols number of tiles, as well as a skewness factor
-    # used to calculate the skewed observed distance distribution.
-    def __init__(self, numRows: int, numCols: int, skewness: float = 0.5):
-        super().__init__(numRows, numCols)
-        self.skewness = skewness
+    rejection_vals = rejection_sampling(
+        network, 'Thomas bayus', {'Kenius bayus': kenius_bayus_genome}, num_samples=num_steps)
+    rejection_p_aaac = rejection_vals.get(('A', 'A', 'A', 'C'), 0.0)
 
-    ##################################################################################
-    # Problem 5 (part b):
-    # Function: Observe with sensor deception (update the probabilities based on an observation)
-    # -----------------
-    # Apply the adjustment to observed distance based on the transformation
-    # D_t_' = 1/(1+skewness**2) * D_t + sqrt(2 * (1/(1+skewness**2))) then copy
-    # your previous observe() implementation from ExactInference() to update the probabilities.
-    # Note that the skewness parameter is set in the constructor.
-    #
-    # - agentX: x location of your car (not the one you are tracking)
-    # - agentY: y location of your car (not the one you are tracking)
-    # - observedDist: true distance plus a mean-zero Gaussian with standard
-    #                 deviation Const.SONAR_STD
-    #
-    # Notes:
-    # - Convert row and col indices into locations using util.rowToY and util.colToX.
-    # - util.pdf: computes the probability density function for a Gaussian
-    # - Although the gaussian pdf is symmetric with respect to the mean and value,
-    #   you should pass arguments to util.pdf in the correct order
-    # - Don't forget to normalize self.belief after you update its probabilities!
-    ##################################################################################
+    print(f"{'Gibbs':>10} {gibbs_p_aaac:.4f}")
+    print(f"{'Rejection':>10} {rejection_p_aaac:.4f}")
+    print(f"{'Exact':>10} {exact_inference():.4f}")
 
-    def observe(self, agentX: int, agentY: int, observedDist: float):
-        pass
-        # ### START CODE HERE ###
-        # ### END CODE HERE ###
+# Uncomment to test Gibbs vs. rejection sampling
+# test_gibbs_vs_rejection(num_steps=100, mutation_rate=0.1, genome_length=4)
+# test_gibbs_vs_rejection(num_steps=10000, mutation_rate=0.1, genome_length=4)
 
-    def elapseTime(self):
-        super().elapseTime()
+############################################################
+# Problem 3d: Bayesian network for annotators
 
-    def getBelief(self):
-        return super().getBelief()
+def bayesian_network_for_annotators(num_annotators: int, dataset_size: int=1) -> BayesianNetwork:
+    """
+    Return the Bayesian network for the annotators.
+    """
+    pass
+    # ### START CODE HERE ###
+    # ### END CODE HERE ###
+
+############################################################
+# Problem 3e: Maximum likelihood estimation
+
+def accumulate_assignment(
+    counts: Dict[str, np.ndarray],
+    network: BayesianNetwork,
+    assignment: Dict[str, str],
+    weight: float = 1.0,
+    batch_indices: Optional[List[int]] = None,
+) -> None:
+    """
+    Add weighted counts for a fully or partially observed assignment.
+    """
+    batch_size = len(list(assignment.values())[0])
+    for i in range(batch_size) if batch_indices is None else range(len(batch_indices)):
+        idx = batch_indices[i] if batch_indices is not None else i
+        assignment_i = {k: v[i] for k, v in assignment.items()}
+        for node in network.nodes:
+            pass
+            # ### START CODE HERE ###
+            # ### END CODE HERE ###
+
+def mle_estimation(network: BayesianNetwork, data: List[Dict[str, List[str]]], lambda_param: float = 1.0) -> BayesianNetwork:
+    """
+    Return the Bayesian network with the parameters estimated by MLE.
+    """
+    pass
+    # ### START CODE HERE ###
+    # ### END CODE HERE ###
+
+############################################################
+# Problem 3f: Maximum likelihood estimation for annotators
+
+def mle_estimation_for_annotators(data: List[Dict[str, List[str]]]) -> BayesianNetwork:
+    """
+    Return the Bayesian network with the parameters estimated by MLE for the annotators.
+    """
+    pass
+    # ### START CODE HERE ###
+    # ### END CODE HERE ###
+
+def test_mle_estimation_for_annotators():
+    data = load_annotation_csv('data/annotations.csv', include_labels=True)
+    trained = mle_estimation_for_annotators(data)
+    plot_annotator_cpts(trained, "plots/annotators.png")
+
+# test_mle_estimation_for_annotators()
+
+############################################################
+# Problem 4a: Expectation step
+
+def e_step(
+    network: BayesianNetwork, data: List[Dict[str, List[str]]]
+) -> Tuple[List[Dict[str, List[str]]], List[float], List[List[int]]]:
+    """
+    Create the dataset of fully-observed weighted observations given some hidden variables, for the EM algorithm.
+    """
+    pass
+    # ### START CODE HERE ###
+    # ### END CODE HERE ###
+
+############################################################
+# Problem 4b: Maximization step
+
+def m_step(
+    network: BayesianNetwork,
+    all_completions: List[Dict[str, str]],
+    all_weights: List[float],
+    all_indices: List[int],
+) -> BayesianNetwork:
+    """
+    Update the CPTs of the Bayesian network using expected counts.
+    """
+    pass
+    # ### START CODE HERE ###
+    # ### END CODE HERE ###
+
+############################################################
+# Problem 4c: Expectation maximization
+
+def em_learn(network: BayesianNetwork, data: List[Dict[str, str]], num_iterations: int) -> BayesianNetwork:
+    """
+    Run the EM algorithm for a given number of iterations.
+    """
+    pass
+    # ### START CODE HERE ###
+    # ### END CODE HERE ###
+
+def test_em_learn():
+    network = bayesian_network_for_annotators(num_annotators=3, dataset_size=100)
+    data = load_annotation_csv('data/annotations.csv', include_labels=False)
+    trained = em_learn(network, data, num_iterations=100)
+    plot_annotator_cpts(trained, "plots/annotators_em.png")
+    plot_label_cpt(trained, "plots/labels_em.png")
+
+# Uncomment to test EM learning
+# test_em_learn()

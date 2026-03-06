@@ -1,0 +1,11 @@
+\item \points{3e}
+
+We will now implement maximum-likelihood estimation for Bayesian network parameters, which assumes every variable is observed. Implement the function \texttt{mle\_estimate}, which takes in a \texttt{BayesianNetwork} and a list of observations and returns a new \texttt{BayesianNetwork} with the parameters estimated by MLE.
+
+You will have to support Laplace smoothing using the parameter \texttt{lambda\_param}.
+
+\expect{
+    An implementation of the \texttt{mle\_estimate} function in \texttt{submission.py}.
+
+    You should first implement the helper function \texttt{accumulate\_assignment} to accumulate the counts for each assignment. You should also use the provided helper functions \texttt{init\_zero\_conditional\_probability\_tables} and \texttt{normalize\_counts} where applicable; you don't need to implement them.
+}

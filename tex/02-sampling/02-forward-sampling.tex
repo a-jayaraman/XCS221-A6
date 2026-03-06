@@ -1,0 +1,8 @@
+\item \points{2b}
+
+You will need to implement some initial scaffolding to enable sampling from Bayesian networks in the code.
+Extend the \texttt{BayesianNetwork} class and implement the function \texttt{forward\_sampling}. This function should sample a single observation from the joint probability distribution of the given Bayesian network.
+
+\expect{
+    An implementation of the \texttt{forward\_sampling} function in \texttt{submission.py}. You should use the given ordering of variables in \texttt{self.order} and sample from each one in order, using its conditional probability distribution and the values of its parents (which you should have already sampled). Each variable is represented by a \texttt{BayesianNode} object. Your solution should explicitly handle varying sequence lengths by using the \texttt{network.batch\_size} parameter.
+}

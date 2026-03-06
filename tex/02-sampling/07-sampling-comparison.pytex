@@ -1,0 +1,28 @@
+\item \points{2g}
+
+Fill out the table below with the estimated posterior probabilities from each method.
+
+\begin{center}
+\lstDeleteShortInline|
+\begin{tabular}{|l|c|l|}
+\hline
+\textbf{Method} & \textbf{Steps/Iterations} & \textbf{Estimated Posterior} \\
+\hline
+Rejection sampling & 100 & \rule{6cm}{0pt} \\
+Rejection sampling & 10,000 & \rule{6cm}{0pt} \\
+Gibbs sampling & 100 & \rule{6cm}{0pt} \\
+Gibbs sampling & 10,000 & \rule{6cm}{0pt} \\
+Exact & --- & \rule{6cm}{0pt} \\
+\hline
+\end{tabular}
+\lstMakeShortInline|
+\end{center}
+
+\expect{
+    A completed table comparing rejection sampling, Gibbs sampling, and exact inference results.
+}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_2g(.*?)% <SCPD_SUBMISSION_TAG>_2g', f.read(), re.DOTALL)).group(1))
+🐍

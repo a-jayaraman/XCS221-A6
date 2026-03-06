@@ -1,0 +1,12 @@
+\item \points{4e} \textbf{EM Recovery Analysis}
+
+Based on the plots, did the EM algorithm recover the true labels? How do you know?
+
+\expect{
+    A yes/no answer to the question, along with the evidence for your answer.
+}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_4e(.*?)% <SCPD_SUBMISSION_TAG>_4e', f.read(), re.DOTALL)).group(1))
+🐍

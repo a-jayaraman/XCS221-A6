@@ -1,0 +1,21 @@
+\item \points{2a}
+Let's first get familiar with the provided interface for Bayesian networks. Convert the provided phylogenetic tree into a Bayesian network using the \texttt{BayesianNetwork} class and the \texttt{BayesianNode} class defined in \texttt{util.py}.
+
+\begin{redbox}
+
+  \textbf{Understanding the shape of the conditional probability table (CPT):} When you create a \texttt{BayesianNode}, the last dimension of its conditional probability table will correspond to that node's domain, and every preceding dimension will match the size of each parent's domain (in parent order). For example, a node with two parents whose domains are length 4 and a child domain of length 4 needs a CPT of shape \texttt{(4, 4, 4)}.
+
+  By default, the \texttt{BayesianNode} constructor will create a uniform distribution over the domain, but for some problems you may need to set the CPTs to a different distribution.
+
+  \textbf{For later problems:} Remember to read and understand the member functions of the \texttt{BayesianNode} class in \texttt{util.py}, particularly \texttt{get\_probability}, \texttt{parent\_assignment\_indices}, and \texttt{iter\_parent\_assignments}.
+
+  Also, each \texttt{BayesianNetwork} has a \texttt{batch\_size} parameter, which sets the size of a special batch axis for the nodes without parents. Your code may have to handle such nodes as a special case. This batch axis is used to sample sequences of independent observations (e.g. perhaps a DNA sequence...). By default, the \texttt{batch\_size} is 1, but for some problems you may need to set it to a different value.
+
+\end{redbox}
+
+
+\expect{
+  An implementation of the \texttt{initialize\_phylogenetic\_tree} function in \texttt{submission.py}, which takes in a \texttt{mutation\_rate} and returns a \texttt{BayesianNetwork} object representing the phylogenetic tree with the conditional probability tables being determined by the mutation rate.
+
+  We provide code for varying the \texttt{genome\_length} parameter; you only need to define each node and its domain, parents, and conditional probability table.
+}

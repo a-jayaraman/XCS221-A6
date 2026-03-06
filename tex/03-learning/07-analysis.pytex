@@ -1,0 +1,12 @@
+\item \points{3g} \textbf{Annotator Analysis}
+
+After training the model with MLE, plot the conditional probability table for each of the annotators using the function \texttt{plot\_annotator\_cpts}. Which annotator seems to be the least trustworthy, and why?
+
+\expect{
+   A plot of the conditional probability tables for each annotator, along with a brief explanation of why the annotator is the least trustworthy. 
+}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_3g(.*?)% <SCPD_SUBMISSION_TAG>_3g', f.read(), re.DOTALL)).group(1))
+🐍

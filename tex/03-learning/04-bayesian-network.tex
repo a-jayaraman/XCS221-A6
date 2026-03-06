@@ -1,0 +1,7 @@
+\item \points{3d}
+
+Implement \texttt{bayesian\_network\_for\_annotators(num\_annotators, dataset\_size)}, which returns the Bayesian network used for the remaining parts of this problem set. Your network should contain a latent \texttt{Y} node for the labels and one annotator node per annotator (e.g. \texttt{A\_0}, \texttt{A\_1}, \texttt{A\_2}; 0-indexed), all sharing the same domain \texttt{['good', 'bad']}.
+
+\expect{
+    Describe the nodes, domains, parent relationships, and initial CPTs you use. The CPTs should encode a reasonable prior that annotators are better than chance (e.g., diagonally dominant matrices).
+}

@@ -1,0 +1,23 @@
+\item \points{3c} \textbf{Random Annotator CPT}
+
+Fill out the following table with the local conditional probability distribution of an annotator who guesses uniformly at random.
+
+\begin{center}
+\lstDeleteShortInline|
+\begin{tabular}{|c|c|c|}
+\hline
+$Y$ & $p(A_1 = \text{good} \mid Y)$ & $p(A_1 = \text{bad} \mid Y)$ \\
+\hline
+$\text{good}$ & \rule{3cm}{0pt} & \rule{3cm}{0pt} \\
+$\text{bad}$  & \rule{3cm}{0pt} & \rule{3cm}{0pt} \\
+\hline
+\end{tabular}
+\lstMakeShortInline|
+\end{center}
+
+\expect{A table showing the conditional probability distribution.}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_3c(.*?)% <SCPD_SUBMISSION_TAG>_3c', f.read(), re.DOTALL)).group(1))
+🐍

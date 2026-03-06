@@ -1,0 +1,14 @@
+\item \points{5a} \textbf{Job Tasks and Potential for Displacement}
+
+\begin{itemize}
+    \item Identify and describe what kinds of tasks or jobs this product is most useful for.
+    \item Refer to at least one resource (industry report, company blog, or academic article) that discusses these types of tasks or jobs, and summarize any projections or claims about automation or productivity within this context.
+    \item Consider the \textbf{ecosystem view}: AI's impact depends on upstream factors (data, compute, labor, environment) and downstream factors (users, deployment, harm). Beyond job displacement, what are the upstream labor implications? What kinds of human labor (e.g., data labeling, content moderation, model training) were required to build and maintain this product?
+  \end{itemize}
+
+  \expect{In 4-6 sentences, list and discuss the primary tasks or job roles relevant to this product. Support your answer with at least one citation to an external source when possible. Additionally, discuss the upstream labor required to build and maintain the product, considering the full ecosystem of work involved.}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_5a(.*?)% <SCPD_SUBMISSION_TAG>_5a', f.read(), re.DOTALL)).group(1))
+🐍

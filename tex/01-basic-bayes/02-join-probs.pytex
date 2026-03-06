@@ -1,0 +1,10 @@
+\item \points{1b} \textbf{Joint Probability Expression}
+
+Express the joint probability $\mathbb{P}(\text{Rain}, \text{Sprinkler}, \text{WetGrass})$ in terms of local conditional probabilities.
+
+\expect{The simplified joint probability expression, in terms of the local conditional probabilities (not a numerical value).}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_1b(.*?)% <SCPD_SUBMISSION_TAG>_1b', f.read(), re.DOTALL)).group(1))
+🐍

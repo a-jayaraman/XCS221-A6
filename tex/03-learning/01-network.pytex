@@ -1,0 +1,12 @@
+\item \points{3a} \textbf{Annotator Network Diagram}
+
+Let's assume you have a single data point and three annotators who assign labels to this data point. List the edges in the Bayesian network for this scenario using the random variables $Y$ (the prior over ground-truth labels of this data point), $A_1$, $A_2$, and $A_3$ (the distribution over the annotators' claimed labels conditioned on the ground-truth label of the data point).
+
+\expect{
+    A list of edges in the Bayesian network, in the format of $\text{variable1} \rightarrow \text{variable2}$.
+}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_3a(.*?)% <SCPD_SUBMISSION_TAG>_3a', f.read(), re.DOTALL)).group(1))
+🐍

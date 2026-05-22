@@ -1,0 +1,341 @@
+% !TEX root = submission.tex
+% This contents of this file will be inserted into the _Solutions version of the
+% output tex document.  Here's an example:
+
+% If assignment with subquestion (1.a) requires a written response, you will
+% find the following flag within this document: <SCPD_SUBMISSION_TAG>_1a
+% In this example, you would insert the LaTeX for your solution to (1.a) between
+% the <SCPD_SUBMISSION_TAG>_1a flags.  If you also constrain your answer between the
+% START_CODE_HERE and END_CODE_HERE flags, your LaTeX will be styled as a
+% solution within the final document.
+
+% Please do not use the '<SCPD_SUBMISSION_TAG>' character anywhere within your code.  As expected,
+% that will confuse the regular expressions we use to identify your solution.
+
+\def\assignmentnum{6 }
+\def\assignmentname{Bayesian Networks}
+\def\assignmenttitle{XCS221 Assignment \assignmentnum --- \assignmentname}
+\input{macros}
+\begin{document}
+\pagestyle{myheadings} \markboth{}{\assignmenttitle}
+
+% <SCPD_SUBMISSION_TAG>_entire_submission
+
+This handout includes space for every question that requires a written response.
+Please feel free to use it to handwrite your solutions (legibly, please).  If
+you choose to typeset your solutions, the |README.md| for this assignment includes
+instructions to regenerate this handout with your typeset \LaTeX{} solutions.
+\ruleskip
+
+\LARGE
+1.a
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_1a
+\begin{answer}
+  % ### START CODE HERE ###
+  $\text{Rain} \rightarrow \text{WetGrass}$ \\
+  $\text{Sprinkler} \rightarrow \text{WetGrass}$
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_1a
+
+\LARGE
+1.b
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_1b
+\begin{answer}
+  % ### START CODE HERE ###
+  $\mathbb{P}(\text{Rain}, \text{Sprinkler}, \text{WetGrass}) = \mathbb{P}(\text{Rain})\mathbb{P}(\text{Sprinkler})\mathbb{P}(\text{WetGrass} \mid \text{Rain}, \text{Sprinkler})$
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_1b
+
+\LARGE
+1.c
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_1c
+\begin{answer}
+  % ### START CODE HERE ###
+  $\mathbb{P}(\text{WetGrass}) = \sum_{\text{Rain}} \sum_{\text{Sprinkler}} \mathbb{P}(\text{Rain})\mathbb{P}(\text{Sprinkler})\mathbb{P}(\text{WetGrass} \mid \text{Rain}, \text{Sprinkler})$
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_1c
+
+\LARGE
+1.d
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_1d
+\begin{answer}
+  % ### START CODE HERE ###
+  The probability that it rained ($\text{Rain} = \text{True}$), the sprinklers are on ($\text{Sprinkler} = \text{True}$), but the grass is not wet ($\text{WetGrass} = \text{False}$) is given by:
+  \begin{align*}
+  \mathbb{P}(\text{Rain}=\text{True}, \text{Sprinkler}=\text{True}, \text{WetGrass}=\text{False}) &= \mathbb{P}(\text{Rain}=\text{True}) \mathbb{P}(\text{Sprinkler}=\text{True}) \mathbb{P}(\text{WetGrass}=\text{False} \mid \text{Rain}=\text{True}, \text{Sprinkler}=\text{True}) \\
+  &= 0.2 \times 0.5 \times (1 - 0.9) \\
+  &= 0.2 \times 0.5 \times 0.1 \\
+  &= 0.01
+  \end{align*}
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_1d
+
+\LARGE
+1.e
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_1e
+\begin{answer}
+  % ### START CODE HERE ###
+  (a) True \\
+  (b) False \\
+  (c) True
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_1e
+\clearpage
+
+\LARGE
+2.d
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_2d
+\begin{answer}
+  % ### START CODE HERE ###
+  \begin{center}
+  \begin{tabular}{|l|l|}
+  \hline
+  \textbf{Species} & \textbf{Genome} \\
+  \hline
+  Thomas bayus & T T C C A T T C C C \\
+  Humblus studentus & T G C C A T T C C T \\
+  Aryamus bayus & T T C C A T T C C C \\
+  Kenius bayus & T T C C A T T C C C \\
+  \hline
+  \end{tabular}
+  \end{center}
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_2d
+
+\LARGE
+2.g
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_2g
+\begin{answer}
+  % ### START CODE HERE ###
+  \begin{center}
+  \begin{tabular}{|l|c|l|}
+  \hline
+  \textbf{Method} & \textbf{Steps/Iterations} & \textbf{Estimated Posterior} \\
+  \hline
+  Rejection sampling & 100 & 0.0000 \\
+  Rejection sampling & 10,000 & 0.0667 \\
+  Gibbs sampling & 100 & 0.0900 \\
+  Gibbs sampling & 10,000 & 0.0332 \\
+  Exact & --- & 0.0335 \\
+  \hline
+  \end{tabular}
+  \end{center}
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_2g
+\clearpage
+
+\LARGE
+3.a
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_3a
+\begin{answer}
+  % ### START CODE HERE ###
+  $Y \rightarrow A_1$ \\
+  $Y \rightarrow A_2$ \\
+  $Y \rightarrow A_3$
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_3a
+
+\LARGE
+3.b
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_3b
+\begin{answer}
+  % ### START CODE HERE ###
+  \begin{center}
+  \begin{tabular}{|c|c|c|}
+  \hline
+  $Y$ & $p(A_1 = \text{good} \mid Y)$ & $p(A_1 = \text{bad} \mid Y)$ \\
+  \hline
+  $\text{good}$ & 1.0 & 0.0 \\
+  $\text{bad}$  & 0.0 & 1.0 \\
+  \hline
+  \end{tabular}
+  \end{center}
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_3b
+
+\LARGE
+3.c
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_3c
+\begin{answer}
+  % ### START CODE HERE ###
+  \begin{center}
+  \begin{tabular}{|c|c|c|}
+  \hline
+  $Y$ & $p(A_1 = \text{good} \mid Y)$ & $p(A_1 = \text{bad} \mid Y)$ \\
+  \hline
+  $\text{good}$ & 0.5 & 0.5 \\
+  $\text{bad}$  & 0.5 & 0.5 \\
+  \hline
+  \end{tabular}
+  \end{center}
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_3c
+
+\LARGE
+3.g
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_3g
+\begin{answer}
+  % ### START CODE HERE ###
+  \begin{center}
+  \includegraphics[width=0.7\textwidth]{images/annotators.png}
+  \end{center}
+  Based on the conditional probability tables trained via MLE:
+  \begin{itemize}
+      \item \textbf{Annotator 0 ($A_0$)} has high accuracy: $p(A_0=\text{good} \mid Y=\text{good}) \approx 0.906$ and $p(A_0=\text{bad} \mid Y=\text{bad}) \approx 0.863$.
+      \item \textbf{Annotator 1 ($A_1$)} also has high accuracy: $p(A_1=\text{good} \mid Y=\text{good}) \approx 0.849$ and $p(A_1=\text{bad} \mid Y=\text{bad}) \approx 0.863$.
+      \item \textbf{Annotator 2 ($A_2$)} has conditional probabilities close to $0.5$ (random guessing): $p(A_2=\text{good} \mid Y=\text{good}) \approx 0.623$ and $p(A_2=\text{bad} \mid Y=\text{bad}) \approx 0.529$.
+  \end{itemize}
+  Therefore, Annotator 2 ($A_2$ in code, corresponding to the third annotator $A_3$ in the network diagram) is the least trustworthy because their claims are closest to uniformly random guesses and provide very little information about the true label $Y$.
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_3g
+\clearpage
+
+\LARGE
+4.d
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_4d
+\begin{answer}
+  % ### START CODE HERE ###
+  \begin{center}
+  \includegraphics[width=0.48\textwidth]{images/annotators_em.png}
+  \hfill
+  \includegraphics[width=0.48\textwidth]{images/labels_em.png}
+  \end{center}
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_4d
+
+\LARGE
+4.e
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_4e
+\begin{answer}
+  % ### START CODE HERE ###
+  Yes, the EM algorithm successfully recovered the true labels. We know this because:
+  \begin{enumerate}
+      \item The match rate between the predicted labels from the learned posterior distribution $q(Y)$ and the ground-truth labels is $90.0\%$, which is extremely high for unsupervised learning.
+      \item The learned conditional probability tables for the annotators after 100 EM iterations ($\text{A}_0$: $\approx 0.925$ for good/good and $\approx 0.915$ for bad/bad; $\text{A}_1$: $\approx 0.868$ for good/good and $\approx 0.915$ for bad/bad; $\text{A}_2$: $\approx 0.679$ for good/good and $\approx 0.596$ for bad/bad) closely mirror the supervised MLE parameters trained with access to true labels.
+  \end{enumerate}
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_4e
+
+\clearpage
+
+
+\LARGE
+5.a
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_5a
+\begin{answer}
+  % ### START CODE HERE ###
+  Cursor is an AI-powered code editor designed to automate and augment software engineering tasks such as writing boilerplate code, refactoring, bug fixing, and generating tests. A recent study by McKinsey \& Company (``The economic potential of generative AI: The next productivity frontier,'' 2023) estimates that generative AI could increase software engineering productivity by 20 to 45 percent, primarily by speeding up routine coding drafts. Beyond downstream productivity, building and maintaining Cursor relies heavily on a complex upstream labor ecosystem. This includes low-wage annotators in developing nations performing reinforcement learning from human feedback (RLHF) and data labeling, as well as software engineers who curate training sets, perform content moderation, and continuously fine-tune the underlying models.
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_5a
+
+\LARGE
+5.b
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_5b
+\begin{answer}
+  % ### START CODE HERE ###
+  Cursor is primarily designed as an augmentation tool rather than a complete replacement for software engineers, as features like Copilot++ and Chat require human developers to review, integrate, and debug the generated code. However, if employers over-rely on Cursor and attempt to replace junior developers, they face significant risks due to model hallucinations, security vulnerabilities, and logic bugs that an automated system cannot resolve independently. For workers, this creates the risk of deskilling, where developers lose deep problem-solving skills by delegating critical thinking to the AI, and a reduced number of entry-level opportunities. For employers, incompetent code generation can lead to severe technical debt, security breaches, and unstable software architectures that are extremely costly to remediate. Thus, while it augments skilled developers, incorrect deployment risks creating fragile codebases and a hollowed-out labor pipeline.
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_5b
+
+\LARGE
+5.c
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_5c
+\begin{answer}
+  % ### START CODE HERE ###
+  Cursor's paid subscription model and requirement for high-speed internet and modern hardware could exacerbate the digital divide, benefiting affluent developers in tech hubs while leaving under-resourced programmers in developing regions behind. While increased access could mitigate this divide by democratizing advanced software assistance, performance disparities pose a distinct risk of deepening inequalities. Specifically, Cursor's underlying models are trained predominantly on English-centric and Western-biased code repositories, causing a performance degradation for developers writing code in non-English programming contexts or using localized languages for comments. To monitor and ensure equitable outcomes, developers should track metrics such as request latency, code suggestion acceptance rates, and semantic correctness compiled across different linguistic, geographic, and demographic user cohorts.
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_5c
+
+\LARGE
+5.d
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_5d
+\begin{answer}
+  % ### START CODE HERE ###
+  To mitigate the risk of job displacement and skill degradation, organizations should establish formal ``human-in-the-loop'' software development policies that position Cursor strictly as an assistant rather than a primary coder. This strategy should be paired with company-sponsored reskilling programs that train developers to focus on higher-level architectural design, security auditing, and system integration. Under this framework, human developers must retain absolute oversight and authority, meaning that no code generated by Cursor can be merged into production without peer review and manual approval. Giving humans ultimate control ensures accountability and prevents automated code generation from degrading the safety and security of software systems. Furthermore, policymakers could offer tax incentives for businesses that use AI to augment and expand their existing workforce rather than reduce headcount.
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_5d
+\clearpage
+
+\LARGE
+6.a
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_6a
+\begin{answer}
+  % ### START CODE HERE ###
+  Cursor is an AI-first code editor built on top of VS Code, offering key features such as inline code generation (Cmd+K), a conversational sidebar (Cmd+L), and Copilot++ which auto-completes edits across multiple lines. Its primary strengths lie in its deep integration with the IDE workspace, its ability to reference the entire codebase context, and its seamless user interface that minimizes context switching. However, its weaknesses include occasional code hallucinations, a reliance on proprietary models that raise data privacy concerns for enterprise users, and a performance degradation when dealing with very large repositories or less common programming languages.
+
+  To address these weaknesses, Cursor should first implement a robust local-first execution mode. This would allow enterprise users to run smaller, highly-optimized open-source LLMs locally on their own machines or private servers, preventing sensitive code from leaving their local network and addressing data privacy issues. Furthermore, Cursor should introduce an automated local compiler feedback loop. By automatically compiling and running tests on generated code snippets in the background, the editor could verify syntactic and semantic correctness before presenting suggestions to the user, significantly reducing hallucinations and bugs.
+
+  Additionally, to improve support for underrepresented languages and large-scale codebases, Cursor could implement a dynamic retrieval-augmented generation (RAG) system that actively indexes local documentation and APIs. By letting developers explicitly pin local documentation folders or custom symbol databases, the editor can generate accurate context-aware code even for niche frameworks without requiring giant context windows or model fine-tuning.
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_6a
+
+\LARGE
+6.b
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_6b
+\begin{answer}
+  % ### START CODE HERE ###
+  Currently, the power to steer products like Cursor is concentrated among corporate executives and AI researchers who prioritize rapid feature deployment and market share. However, the responsibility for the societal and security impacts of these tools should be co-held by engineers, policymakers, and user communities, as these stakeholders are the ones who bear the risks of data privacy breaches and labor displacement. This misalignment creates a tension where profit motives drive tool development while the public and workers absorb the negative external costs of low-quality or biased AI code. To shift this power dynamic, we recommend the establishment of independent, developer-led AI ethics boards with veto power over product deployment, alongside policy mandates that require third-party auditing of AI tools before public release. This would democratize the governance of AI development and ensure that products are built responsibly and with accountability to the community.
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_6b
+\clearpage
+
+% <SCPD_SUBMISSION_TAG>_entire_submission
+
+\end{document}
